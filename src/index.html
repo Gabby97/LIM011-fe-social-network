@@ -2,44 +2,37 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css">
-  <title>Document</title>
-  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ruteo</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-auth.js"></script>
 </head>
 
 <body>
-  <header>
-    <h1>Natural Club</h1>
-  </header>
-  <main>
-    <form action="" class="formulario-validacion ">
-      <input type="text" id="input-email" placeholder="Email">
-      <input type="password" id="input-password" placeholder="Password">
-      <button type="submit" id="button-login">Log in</button>
-      <p>O bien ingresa con...</p>
-      <figure>
-        <img src="../src/image/facebook.png" alt="icon facebook">
-        <img src="../src/image/search.png" alt="icon google">
-      </figure>
-      <i>No tienes una cuenta</i> <a href="#">Regístrate</a>
-    </form>
-    <form action="" class="formulario-registro">
-      <input type="text" id="name" placeholder="Name">
-      <input type="text" id="input-email" placeholder="Email">
-      <input type="password" id="input-password" placeholder="Password">
-      <input type="password" id="confirm-password" placeholder="Confirm Password">
-      <button type="submit" id="button-login">Sing up</button>
-    </form>
-  </main>
-  <footer>
+    <section id="container">
+        <main class="main-init">
+        <section class="init-img"><img src="../src/image/header-phone.jpg" alt=""></section>
+        <section>
+        <h2>codebook</h2>
+        <h5>!Bienvenida, coder!</h5>
+        <form>
+        <input type="email" placeholder="  Email" class="field-login"><br><br>
+        <input type="password" placeholder="  Password" class="field-login"> <br><br>
+        <input type="submit" value="Log in" class="field-login button">
+        </form>       
+        <h5>O bien ingresa con...</h5>
+        <h5>?No tienes una cuenta?<a href="#/lugares"> Registrate.</a></h5>
+        <h5>?No tienes una cuenta?<a href="#/hola"> Registrate.</a></h5>
+      </section>
+      </main>
+    </section>
 
-  </footer>
-  <script type="module" src="index.js"></script>
-  <script src="controller-firebase.js"></script>
+    <script type="module" src="main.js"></script>
+    <script src="controller-firebase.js"></script>
 </body>
 
 </html>
