@@ -10,15 +10,16 @@ firebase.initializeApp({
   });
 
 const db = firebase.firestore();
+const dba = firebase.auth();
 
 
-db.collection('users').doc('gabbacvdo@gmail.com').set({
-    name: 'Gaby',
-    lastName: 'Acevedo',
+db.collection('users').doc('marcvdo@gmail.com').set({
+    name: 'Maria',
+    lastName: 'López',
     gender: 'Female',
     age: '22'
 });
-firebase.auth().createUserWithEmailAndPassword('gabbacvdo@gmail.com', '123455').catch(function(error) {
+dba.createUserWithEmailAndPassword('marcvdo@gmail.com', '123455abd').catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
