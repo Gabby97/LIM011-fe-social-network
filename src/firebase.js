@@ -1,41 +1,40 @@
 //Datos requeridos para el Register 
-export const registerLog = (name, age, gender, email, password, confirmPassword) => { 
-firebase.auth().createUserWithEmailAndPassword(email, password)
-.then(() => {
-    const db = firebase.firestore();
-    db.collection("social-network").doc(email).set({
-        name: name,
-        age: age,
-        gender: gender,
-        email: email,
-        password: password,
-        confirm: confirmPassword,
-    });
-})
-.catch((error) => {
-const errorCode = error.code;
-const errorMessage = error.message;
-console.log(errorCode);
-console.log(errorMessage);
-});
+export const registerLog = (register) => {
+    console.log(register.name);
+     firebase.auth().createUserWithEmailAndPassword(register.email, register.password)
+        .then(() => {
+            
+            firebase.firestore().collection("users").doc().set({
+                name: register.name,
+                age: register.age,
+                gender: register.gender,
+                email: register.email,
+            });
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
+        });
 };
 
- //Login con email y password // Inicio de sesion
- const emailLog = (email, password) => firebase.auth()
- .signInWithEmailAndPassword(email, password);
- 
+//Login con email y password // Inicio de sesion
+const emailLog = (email, password) => firebase.auth()
+    .signInWithEmailAndPassword(email, password);
+
 
 export const controlLogin = (email, password) => {
     emailLog(email, password).then((response) => {
         console.log(response);
         console.log('usuario registrado');
         //changeRoute('#/home');    
-    }).catch((error) => {        
-        console.log(error.message);     
+    }).catch((error) => {
+        console.log(error.message);
     });
 }
 
-   
+
 //Login con facebook
 const facebookLog = () => {
     const provider = new firebase.auth.FacebookAuthProvider();
@@ -52,8 +51,8 @@ const currentUser = () => firebase.auth().currentUser;
 
 
 
-  //Si deseamos cerrar sesion 
-  //const loginOut = () => firebase.auth().signOut();
+//Si deseamos cerrar sesion 
+//const loginOut = () => firebase.auth().signOut();
 
 // propiedad que usuario esta activo//
 //const currentUser = () => firebase.auth().currentUser;
@@ -64,16 +63,16 @@ export const controlFb = () => {
         console.log(response);
         //changeRoute('#/home');    
     }).catch((error) => {
-        console.log(error);     
+        console.log(error);
     });
-  };
+};
 
-  export const controlGoogle = () => {
-      googleLog().then((response) => {
-          console.log(response);
-          console.log(currentUser());
-          //changeRoute('#/home');     
-      }).catch((error) => {
-          console.log(error); 
-      });
-  };
+export const controlGoogle = () => {
+    googleLog().then((response) => {
+        console.log(response);
+        console.log(currentUser());
+        //changeRoute('#/home');     
+    }).catch((error) => {
+        console.log(error);
+    });
+};

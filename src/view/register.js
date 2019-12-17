@@ -14,7 +14,6 @@ export default () => {
   <input type="text" id = "gender" placeholder="Gender" class="field-login"><br><br>
   <input type="email" id = "email" placeholder= "example@gmail.com" class="field-login"><br><br>
   <input type = "password" id = "password" placeholder = "Password" class="field-login"> <br><br>
-  <input type="password" id = "confirm-password" placeholder="  Confirm Password" class="field-login"><br><br>
   <button type="submit" id = "registro" value="Log in" class="field-login button">Regístrate</button>
   <p class="error" id="error"></p>
   </form>       
@@ -23,16 +22,20 @@ export default () => {
 
 regContainer.innerHTML = registerTemplate;
 regContainer.querySelector('button[type = "submit"]').addEventListener('click', (event) => {
-  const name = regContainer.querySelector('#name').value;
-  const age = regContainer.querySelector('#age').value;
-  const gender = regContainer.querySelector('#gender').value;
-  const email = regContainer.querySelector('#email').value;
-  const password = regContainer.querySelector('#password').value;
-  const confirmPassword = regContainer.querySelector('#confirm-password').value;
-  registerLog(name, age, gender, email, password, confirmPassword);
+  event.preventDefault();
+  const register = {
+        name: regContainer.querySelector('#name').value,
+        age: regContainer.querySelector('#age').value,
+        gender: regContainer.querySelector('#gender').value,
+        email: regContainer.querySelector('#email').value,
+        password: regContainer.querySelector('#password').value
+    }
+  registerLog(register);
 })
 return regContainer;
 };
+
+
 
 /*regContainer.innerHTML = registerTemplate;
 regContainer.classList.add('center');
