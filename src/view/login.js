@@ -1,4 +1,4 @@
-import { emailLog, controlFb, controlGoogle } from '../firebase.js';
+import { controlLogin, controlFb, controlGoogle } from '../firebase.js';
 
 //import { firebaseFacebook } from '../facebook-register.js';
 
@@ -44,7 +44,7 @@ export const viewLogin =  () => {
    const email = logContainer.querySelector('#input-email').value;
    const password = logContainer.querySelector('#input-password').value;
 
-   emailLog(email, password);
+   controlLogin(email, password);
   })
   return logContainer;
 };

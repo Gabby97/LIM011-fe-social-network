@@ -20,10 +20,22 @@ console.log(errorMessage);
 });
 };
 
-    //Login con email y password // Inicio de sesion
-    export const emailLog = (email, password) => firebase.auth()
-    .signInWithEmailAndPassword(email, password);
-    
+ //Login con email y password // Inicio de sesion
+ const emailLog = (email, password) => firebase.auth()
+ .signInWithEmailAndPassword(email, password);
+ 
+
+export const controlLogin = (email, password) => {
+    emailLog(email, password).then((response) => {
+        console.log(response);
+        console.log('usuario registrado');
+        //changeRoute('#/home');    
+    }).catch((error) => {        
+        console.log(error.message);     
+    });
+}
+
+   
 //Login con facebook
 const facebookLog = () => {
     const provider = new firebase.auth.FacebookAuthProvider();
