@@ -2,9 +2,10 @@
 export const registerLog = (register) => {
     console.log(register.name);
      firebase.auth().createUserWithEmailAndPassword(register.email, register.password)
-        .then(() => {
+        .then((response) => {
+            console.log(response.user.uid);
             
-            firebase.firestore().collection("users").doc().set({
+            firebase.firestore().collection("users").doc(response.user.uid).set({
                 name: register.name,
                 age: register.age,
                 gender: register.gender,
@@ -17,7 +18,18 @@ export const registerLog = (register) => {
             console.log(errorCode);
             console.log(errorMessage);
         });
+       /*  firebase.auth().onAuthStateChanged((user) => {
+          console.log(user);
+          
+          if (user) {
+            // User logged in already or has just logged in.
+            console.log(user.uid);
+          } else {
+            // User not logged in or has just logged out.
+          }
+        }); */
 };
+
 
 //Login con email y password // Inicio de sesion
 const emailLog = (email, password) => firebase.auth()
