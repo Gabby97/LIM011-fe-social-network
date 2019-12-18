@@ -4,13 +4,13 @@ export const registerLog = (register) => {
      firebase.auth().createUserWithEmailAndPassword(register.email, register.password)
         .then((response) => {
             console.log(response.user.uid);
-            
-            firebase.firestore().collection("users").doc(response.user.uid).set({
+            createUserCollection(register, response.user.uid);
+          /*   firebase.firestore().collection("users").doc(response.user.uid).set({
                 name: register.name,
                 age: register.age,
                 gender: register.gender,
                 email: register.email,
-            });
+            }); */
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -18,17 +18,14 @@ export const registerLog = (register) => {
             console.log(errorCode);
             console.log(errorMessage);
         });
-       /*  firebase.auth().onAuthStateChanged((user) => {
-          console.log(user);
-          
-          if (user) {
-            // User logged in already or has just logged in.
-            console.log(user.uid);
-          } else {
-            // User not logged in or has just logged out.
-          }
-        }); */
 };
+
+const createUserCollection = (register, id) => {
+  firebase.firestore().collection("users").doc(id).set({
+    name: register.name,
+    email: register.email,
+});
+}
 
 
 //Login con email y password // Inicio de sesion
@@ -62,14 +59,6 @@ const googleLog = () => {
 const currentUser = () => firebase.auth().currentUser;
 
 
-
-//Si deseamos cerrar sesion 
-//const loginOut = () => firebase.auth().signOut();
-
-// propiedad que usuario esta activo//
-//const currentUser = () => firebase.auth().currentUser;
-
-
 export const controlFb = () => {
     facebookLog().then((response) => {
         console.log(response);
@@ -82,7 +71,12 @@ export const controlFb = () => {
 export const controlGoogle = () => {
     googleLog().then((response) => {
         console.log(response);
-        console.log(currentUser());
+        const register = {
+          name: response.name,
+          email: response.email,
+        }
+        createUserCollection(register, response.user.uid);
+        console.log(response.user.uid);
         //changeRoute('#/home');     
     }).catch((error) => {
         console.log(error);
