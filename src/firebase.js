@@ -80,5 +80,7 @@ export const controlGoogle = () => {
         //changeRoute('#/home');     
     }).catch((error) => {
         console.log(error);
+        console.log('holaaa, esta listo');
+        
     });
 };
