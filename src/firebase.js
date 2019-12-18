@@ -23,8 +23,7 @@ export const registerLog = (register) => {
 const createUserCollection = (register, id) => {
   firebase.firestore().collection("users").doc(id).set({
     name: register.name,
-    email: register.email,
-    prueba: 'hola';
+    email: register.email 
 });
 }
 
@@ -73,7 +72,7 @@ export const controlGoogle = () => {
     googleLog().then((response) => {
         console.log(response);
         const register = {
-          name: response.name,
+          name: response.isplayName,
           email: response.email,
         }
         createUserCollection(register, response.user.uid);

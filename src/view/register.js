@@ -9,9 +9,6 @@ export default () => {
   <section class="section-register">
   <h4>Registre su informacion</h4>
   <form id = "form-register">
-  <input type="text" id = "name" value = "" placeholder="Name" class="field-login"><br><br>
-  <input type="number" id = "age" placeholder="Age" class="field-login"><br><br>
-  <input type="text" id = "gender" placeholder="Gender" class="field-login"><br><br>
   <input type="email" id = "email" placeholder= "example@gmail.com" class="field-login"><br><br>
   <input type = "password" id = "password" placeholder = "Password" class="field-login"> <br><br>
   <button type="submit" id = "registro" value="Log in" class="field-login button">Regístrate</button>
