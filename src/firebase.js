@@ -24,6 +24,7 @@ const createUserCollection = (register, id) => {
   firebase.firestore().collection("users").doc(id).set({
     name: register.name,
     email: register.email,
+    prueba: 'hola';
 });
 }
 
