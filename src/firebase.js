@@ -23,33 +23,3 @@ export const createUserCollection = (register) => {
 const currentUser = () => firebase.auth().currentUser;
 
 
-<<<<<<< HEAD
-=======
-export const controlFb = () => {
-    facebookLog().then((response) => {
-        console.log(response);
-        //changeRoute('#/home');    
-    }).catch((error) => {
-        console.log(error);
-    });
-};
-
-export const controlGoogle = () => {
-    googleLog().then((response) => {
-        console.log(response);
-        const register = {
-          name: response.isplayName,
-          email: response.email,
-        }
-        createUserCollection(register, response.user.uid);
-        console.log(response.user.uid);
-        //changeRoute('#/home');     
-    }).catch((error) => {
-        console.log(error);
-        console.log('holaaa, esta listo');
-        console.log('cambio de rama');
-
-        
-    });
-};
->>>>>>> b9d9a0818546bb420d07608504b50ab513bf6787
