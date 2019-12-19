@@ -5,12 +5,6 @@ export const registerLog = (register) => {
         .then((response) => {
             console.log(response.user.uid);
             createUserCollection(register, response.user.uid);
-          /*   firebase.firestore().collection("users").doc(response.user.uid).set({
-                name: register.name,
-                age: register.age,
-                gender: register.gender,
-                email: register.email,
-            }); */
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -23,7 +17,8 @@ export const registerLog = (register) => {
 const createUserCollection = (register, id) => {
   firebase.firestore().collection("users").doc(id).set({
     name: register.name,
-    email: register.email 
+    email: register.email,
+    photo: register.photoURL
 });
 }
 
@@ -47,11 +42,15 @@ export const controlLogin = (email, password) => {
 //Login con facebook
 const facebookLog = () => {
     const provider = new firebase.auth.FacebookAuthProvider();
+    console.log(provider);
+    
     return firebase.auth().signInWithPopup(provider);
 };
 //Login con google
 const googleLog = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
+    console.log(provider);
+    
     return firebase.auth().signInWithPopup(provider);
 };
 
@@ -72,8 +71,9 @@ export const controlGoogle = () => {
     googleLog().then((response) => {
         console.log(response);
         const register = {
-          name: response.isplayName,
+          name: response.displayName,
           email: response.email,
+          photo: response.photoURL,
         }
         createUserCollection(register, response.user.uid);
         console.log(response.user.uid);
