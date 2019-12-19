@@ -22,7 +22,7 @@ const changeRoute = (route) => {
     window.location.hash = route;
   };
 
-  
+  console.log("maray");
 /*case '#/login':
     base.innerHTML = '';
     base.appendChild(viewLogin());
