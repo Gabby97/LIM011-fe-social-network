@@ -82,7 +82,7 @@ export const controlGoogle = () => {
         console.log(error);
         console.log('holaaa, esta listo');
         console.log('cambio de rama');
-
+        console.log("Aceptando cambios nuevamente")
         
     });
 };
