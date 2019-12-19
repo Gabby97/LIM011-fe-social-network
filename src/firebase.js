@@ -18,8 +18,6 @@ export const createUserCollection = (register) => {
     photo: register.photo
 });
 }
-
 // propiedad que usuario esta activo//
 const currentUser = () => firebase.auth().currentUser;
-
 
