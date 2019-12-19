@@ -31,13 +31,13 @@ export const viewLogin = () => {
     facebookLog().then((response) => {
       //  window.location.hash = '#/social-network'; 
       console.log(response);
-    /*  const register = {
+      const register = {
         id: response.user.uid,
-        name: response.additionalUserInfo.profile.name,
-        email: response.additionalUserInfo.profile.email,
-        photo: response.additionalUserInfo.profile.picture
+        name: response.user.displayName,
+        email: response.user.email,
+        photo: response.user.photoURL
       }
-      createUserCollection(register);*/
+      createUserCollection(register);
     })
       .catch((error) => { // Para ver si devuelve un error
         console.log(error.message);
@@ -49,6 +49,8 @@ export const viewLogin = () => {
     event.preventDefault();
     googleLog().then((response) => {
       //  window.location.hash = '#/social-network'; 
+      console.log(response);
+      
       const register = {
         id: response.user.uid,
         name: response.additionalUserInfo.profile.name,
