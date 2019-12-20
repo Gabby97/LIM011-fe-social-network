@@ -17,23 +17,9 @@ export default () => {
   </form>     
 </section>
 </main>`;
-{/* <div class = "btn-fb-google">
-<a id="fb" href="#"><img id = "icon-facebook" src="./image/facebook.png" class = "icons" alt="facebook icon"></a>
-<a id="goog" href="#"><img id = "icon-email" src="./image/search.png" class = "icons" alt="emai icon"></a>   
-</div>    */}
 
 regContainer.innerHTML = registerTemplate;
  
-regContainer.querySelector('#fb').addEventListener('click', (event) => {
-  event.preventDefault();
-  controlFb();
- });
- regContainer.querySelector('#goog').addEventListener('click', (event) => {
-  event.preventDefault();
-  controlGoogle();
- });
-
-
 regContainer.querySelector('button[type = "submit"]').addEventListener('click', (event) => {
   event.preventDefault();
   const register = {
@@ -42,6 +28,8 @@ regContainer.querySelector('button[type = "submit"]').addEventListener('click', 
         password: regContainer.querySelector('#password').value
     }
   registerLog(register);
+  //createUserCollection2(register);
+
 })
 return regContainer;
 };

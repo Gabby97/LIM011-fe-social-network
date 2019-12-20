@@ -13,6 +13,8 @@ export const viewTemplate = (router) => {
             { return base.appendChild(components.vistaLogin()) }
         case '#/register':
             { return base.appendChild(components.vistaRegistro()) }
+        case '#/post':
+            { return base.appendChild(components.vistaPost()) }
         default: 
         break; 
     }
