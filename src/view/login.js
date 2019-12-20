@@ -29,7 +29,7 @@ export const viewLogin = () => {
   logContainer.querySelector('#icon-facebook').addEventListener('click', (event) => {
     event.preventDefault();
     facebookLog().then((response) => {
-      //  window.location.hash = '#/social-network'; 
+      window.location.hash = '#/post'; 
       console.log(response);
       const register = {
         id: response.user.uid,
@@ -48,7 +48,7 @@ export const viewLogin = () => {
   logContainer.querySelector('#icon-google').addEventListener('click', (event) => {
     event.preventDefault();
     googleLog().then((response) => {
-      //  window.location.hash = '#/social-network'; 
+      window.location.hash = '#/post'; 
       console.log(response);
       
       const register = {
@@ -71,6 +71,7 @@ export const viewLogin = () => {
     const password = logContainer.querySelector('#input-password').value;
     emailLog(email, password).then((response) => {
       //  window.location.hash = '#/social-network';
+      console.log(response);
       console.log('Logueado con exito');
     })
       .catch((error) => { // Para ver si devuelve un error
