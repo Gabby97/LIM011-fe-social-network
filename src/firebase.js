@@ -10,6 +10,8 @@ export const emailLog = (email, password) => firebase.auth().signInWithEmailAndP
 //Login con facebook
 export const facebookLog = () => firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
 
+export const postLOg = () => firebase.storage().ref('mis_fotos/' + File.name);
+
 //Insertar en la base de datos
 export const createUserCollection = (register) => {
   firebase.firestore().collection("users").doc(register.id).set({

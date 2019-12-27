@@ -1,4 +1,4 @@
-import { currentUser } from '../firebase.js'
+import { currentUser, postLOg } from '../firebase.js'
 
 
 export default () => {
@@ -23,6 +23,8 @@ export default () => {
   </main>`;
 
   postContainer.innerHTML = postTemplate;
+
   return postContainer;
 }
 //holaaaaaaaaaaaaaaa
+
