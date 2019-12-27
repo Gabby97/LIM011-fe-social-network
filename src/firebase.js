@@ -38,4 +38,3 @@ export const createUserCollection = (register) => {
 export const currentUser = () => firebase.auth().currentUser;
 
 //post
-
