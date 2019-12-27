@@ -1,4 +1,4 @@
-import { currentUser, postLOg } from '../firebase.js'
+import { currentUser } from '../firebase.js'
 
 
 export default () => {
@@ -23,8 +23,20 @@ export default () => {
   </main>`;
 
   postContainer.innerHTML = postTemplate;
+ // Incompleto, en proceso
+  const uploader = postContainer.querySelector('#uploader');
+  const fileButton = postContainer.querySelector('#fileButton');
 
+  postContainer.querySelector('input [type="file"]').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    postLOg();
+    //subir archivo
+    const task = postLOg.put(file);
+    //actualizar barra de progreso
+    task.on('state_changed', () => {
+    })
   return postContainer;
+})
 }
-//holaaaaaaaaaaaaaaa
 
+//holaaaaaaaaaaaaaaa
