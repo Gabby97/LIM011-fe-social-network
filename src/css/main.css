@@ -38,3 +38,26 @@
 a{
   text-decoration: none;
 }
+
+.field-error{
+  border: 1px solid #ff0c19;
+}
+
+.icon-inside-field {
+  position: relative;
+  left: -30px;
+}
+
+.ms-error{
+  color: #ff0c19;
+  text-align: center;
+  font-size: 12px;
+}
+
+.hide{
+  display:none;
+}
+
+.block{
+  display: block;
+}

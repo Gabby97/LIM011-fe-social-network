@@ -1,5 +1,5 @@
 import { viewTemplate } from './view-controller/router.js';
-import { firebaseInitialize } from './firebase-Controller.js';
+import { firebaseInitialize } from './firebase.js';
 
 //import { changeTemplate } from './view-controller/router.js';
 
