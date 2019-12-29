@@ -66,6 +66,13 @@ export const viewLogin = () => {
       });
   });
 
+//Pruebaaaa
+/** 
+ * facebookLog, googleLog y emailLog
+ * log(proveedor) -> facebookLog, googleLog o emailLog
+*/
+
+
   //boton Google
   logContainer.querySelector('#icon-google').addEventListener('click', (event) => {
     event.preventDefault();

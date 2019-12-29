@@ -16,8 +16,6 @@ export default () => {
   <span id = "icon-show-password" class = "hide" ><i class="icon-inside-field  far fa-eye"></i></span><br><br>
   <p class="ms-error"></p>
   <button type="submit" id = "btn-login" value="Registrar" class="field-login button">Log in</button><br><br>
-  <progress value="0" max="100" id="uploader">0%</progress>
-    <input type="file" value="upload" id="fileButton" />
   </form>  
   <label>¿Ya tienes una cuenta?&nbsp;<a href="#/" id="iniciar-sesion">Iniciar Sesión</a></label>
 </section>

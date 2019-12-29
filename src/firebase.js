@@ -1,11 +1,11 @@
-//Inicializar firebase
+  //Inicializar firebase
 export const firebaseInitialize =() => {
   firebase.initializeApp({
       apiKey: "AIzaSyDbD06CrpZ2ItVxy4f33eRlbFM8GX_CF9k",
       authDomain: "social-network-b3bb7.firebaseapp.com",
       databaseURL: "https://social-network-b3bb7.firebaseio.com",
       projectId: "social-network-b3bb7",
-      storageBucket: "social-network-b3bb7.appspot.com",
+      storageBucket: "gs://social-network-b3bb7.appspot.com ",
       messagingSenderId: "2817858639",
       appId: "1:2817858639:web:70c63c4b90a28861d8de3a",
       measurementId: "G-5WZN70EDCZ"
@@ -25,7 +25,17 @@ export const emailLog = (email, password) => firebase.auth().signInWithEmailAndP
 //Login con facebook
 export const facebookLog = () => firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
 
-export const postLOg = () => firebase.storage().ref('mis_fotos/' + File.name);
+export const uploadPostImage = (file) => {
+  var storageRef = firebase.storage().ref();
+  // Points to 'images'
+  var imagesRef = storageRef.child('images');
+  // Note that you can use variables to create child values
+  var ref = imagesRef.child(file.name);
+
+  ref.put(file).then((snapshot) => {
+    console.log('Uploaded a blob or file!');
+  });
+};
 
 //Insertar en la base de datos
 export const createUserCollection = (register) => {
