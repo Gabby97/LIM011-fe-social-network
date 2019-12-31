@@ -1,4 +1,5 @@
-import { currentUser, uploadPostImage } from '../firebase.js'
+import { currentUser } from '../auth.js';
+import { uploadPostImage } from '../storage.js';
 
 
 export default () => {
@@ -37,28 +38,19 @@ export default () => {
   postContainer.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const $file = postContainer.querySelector('input [type="file"]')
-    // const file = $file.target.files[0]
+    const $file = postContainer.querySelector('input')
+     const file = $file.files[0]
 
-    // if (file) {
-    //   uploadPostImage(file);
-    // }
+     if (file) {
+     uploadPostImage(file);
+     console.log('entro');
+     
+     }
 
-    console.log($file)
+    //console.log($file.files)
+
   })
 
-  // postContainer.querySelector('input [type="file"]').addEventListener('change', (e) => {
-  //   const file = e.target.files[0];
-  //   console.log(file);
-    
-  //   uploadPostImage(file);
-  //   //subir archivo
-  //   const task = postLOg.put(file);
-  //   //actualizar barra de progreso
-  //   task.on('state_changed', () => {
-  //     console.log(('listo'));
-      
-  //   })
   return postContainer;
 }
 

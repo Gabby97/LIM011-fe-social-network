@@ -1,4 +1,5 @@
-import { emailLog, googleLog, facebookLog, createUserCollection } from '../firebase.js';
+import { emailLog, googleLog, facebookLog } from '../auth.js';
+import { createUserCollection } from '../app.js';
 
 export const viewLogin = () => {
   const logContainer = document.createElement('div');

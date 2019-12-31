@@ -1,4 +1,5 @@
-import { registerLog, createUserCollection } from '../firebase.js'
+import { registerLog } from '../auth.js';
+import { createUserCollection } from '../app.js';
 
 export default () => {
   const regContainer = document.createElement('div');
