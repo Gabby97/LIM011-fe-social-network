@@ -1,6 +1,7 @@
 //import { viewLogin } from '../view/login.js';
 //import { viewRegister } from '../view/register.js';
 import { components } from '../view/index.js';
+import { loginOut } from '../auth.js';
 
 // vista de templates
 export const viewTemplate = (router) => {
@@ -23,4 +24,3 @@ export const viewTemplate = (router) => {
 const changeRoute = (route) => {
     window.location.hash = route;
   };
-

@@ -18,3 +18,6 @@ auth.createUserWithEmailAndPassword(email, password);
 // propiedad que usuario esta activo//
 export const currentUser = () => 
 auth.currentUser;
+
+export const loginOut = () => 
+auth.signOut();

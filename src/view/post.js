@@ -20,11 +20,13 @@ export default () => {
     <a id="icon-post" href="#"></a>
     <button type="submit" id = "publicar" value="Publicar" class="field-login button">Publicar</button>
     <p class="error" id="error"></p>
-    <progress value="0" max="100" id="uploader">0%</progress>
+    <div class = "post-colum">
+    <textara class = "comment">
     <label>
-      <img id = "icon-post" src="../image/picture.png" class = "icons" alt="post icon">
-      <input type="file" value="upload" id="fileButton" />
-    </label>
+    <img id = "icon-post" src="../image/picture.png" class = "icons" alt="post icon">
+    <input type="file" value="upload" id="fileButton" />
+  </label>
+     </div>
     
     </form>     
   </section>
@@ -43,14 +45,15 @@ export default () => {
 
      if (file) {
      uploadPostImage(file);
+     console.log(snapshot);
+     
      console.log('entro');
      
      }
-
-    //console.log($file.files)
+     /* const collectionPost = (userPost) => {
+      name:userPost.nam
+    } */
 
   })
-
   return postContainer;
-}
-
+} 

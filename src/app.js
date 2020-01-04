@@ -7,6 +7,6 @@ export const createUserCollection = (register) => {
       email: register.email,
       photo: register.photo 
   });
+  console.log(register);
+      
   }
-
-  
