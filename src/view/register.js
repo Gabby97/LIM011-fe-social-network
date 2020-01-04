@@ -1,14 +1,18 @@
+<<<<<<< HEAD
+import { registerLog } from '../firebase.js'
+=======
 import { registerLog } from '../auth.js';
 import { createUserCollection } from '../app.js';
+>>>>>>> a1f08a896113a3da2ff73b00cd38e91c768056c0
 
 export default () => {
   const regContainer = document.createElement('div');
   const registerTemplate = `
   <main class="main-init">
-  <section class="init-img"><img src="../src/image/header-phone.jpg" alt=""></section>
-  <section>
-  <h2>codebook</h2>
-  <h5>!Bienvenida, coder!</h5>
+    <section class="init-banner"><img src = "./image/index-2.jpg"></section>
+    <section class = "init-login">
+    <img src = "./image/logo.jpg">
+    <h5>Registre sus datos</h5>
   <form>
   <input type="text" name = "Name" id = "input-name" placeholder= "  Name" class="field-login"><br><br>
   <input type="email" name = "Correo" id = "input-email" placeholder= "  Email" class="field-login"><br><br>
@@ -18,7 +22,7 @@ export default () => {
   <p class="ms-error"></p>
   <button type="submit" id = "btn-login" value="Registrar" class="field-login button">Log in</button><br><br>
   </form>  
-  <label>¿Ya tienes una cuenta?&nbsp;<a href="#/" id="iniciar-sesion">Iniciar Sesión</a></label>
+  <p>¿Ya tienes una cuenta?&nbsp;<a href="#/" id="iniciar-sesion">Iniciar Sesión</a></p>
 </section>
 </main>`;
 
@@ -47,19 +51,9 @@ export default () => {
 
 
   //boton registrar
-  regContainer.querySelector('button[type = "submit"]').addEventListener('click', (event) => {
-    event.preventDefault();
-    registerLog(email.value, password.value).then((response) => {
-      const register = {
-        id: response.user.uid,
-        name: name.value,
-        email: email.value,
-        photo: '../image/photo.png'
-      }
-      createUserCollection(register);
-      window.location.hash = '#/post';
-
-    })
+  regContainer.querySelector('button[type = "submit"]').addEventListener('click', (e) => {
+    e.preventDefault();
+    registerLog(email.value, password.value).then(() => {window.location.hash = '#/post';})
       .catch((error) => {
         switch (error.code) {
           case 'auth/invalid-email':
