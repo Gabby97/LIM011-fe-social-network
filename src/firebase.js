@@ -25,17 +25,45 @@ export const emailLog = (email, password) => firebase.auth().signInWithEmailAndP
 //Login con facebook
 export const facebookLog = () => firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
 
-//Insertar en la base de datos
-export const createUserCollection = (register) => {
-  firebase.firestore().collection("users").doc(register.id).set({
-    name: register.name,
-    email: register.email,
-    photo: register.photo 
-});
+// Solicitar datos del usuario activo
+export const currentUser = () => {
+  const user = firebase.auth().currentUser;
+  const userData = {
+    id: user.uid,
+    name: (user.displayName === null) ? 'Anonimo' : user.displayName,
+    email: user.email,
+    photo: (user.photoURL === null) ? './image/photo.png' : user.photoURL
+  }
+  return userData;
 }
+  
+//crear post
+export const createPost = (uidUser, nameUser, photoUser, contentPost, publicationDate) => firebase.firestore()
+  .collection('posts')
+  .add({
+    uidUser,
+    nameUser,
+    photoUser,
+    contentPost,
+    like: [],
+    publicationDate,
+  });
 
-// propiedad que usuario esta activo//
-export const currentUser = () => firebase.auth().currentUser;
+export const getPost = () => firebase.firestore().collection("posts").get();
+
+export const saveImgPost = (imgFile, uidUser) => {
+  if (imgFile) {
+    const upload = firebase.storage().ref(`images/${uidUser}/${imgFile.name}`)
+    upload.put(imgFile);
+    console.log(imgFile.name);
+    console.log(imgFile);   
+    
+  }
+};
+
+
+
+  
 
 //post
 

@@ -1,6 +1,6 @@
-//import { viewLogin } from '../view/login.js';
-//import { viewRegister } from '../view/register.js';
 import { components } from '../view/index.js';
+import { currentUser } from '../firebase.js'
+
 
 // vista de templates
 export const viewTemplate = (router) => {
@@ -14,7 +14,8 @@ export const viewTemplate = (router) => {
         case '#/register':
             { return base.appendChild(components.vistaRegistro()) }
         case '#/post':
-            { return base.appendChild(components.vistaPost()) }
+            { return base.appendChild(components.vistaPost(currentUser()));
+        }
         default: 
         break; 
     }
