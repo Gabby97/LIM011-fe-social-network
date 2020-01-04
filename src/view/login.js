@@ -55,6 +55,13 @@ export const viewLogin = () => {
       .catch((error) => {console.log(error.message);});
   });
 
+//Pruebaaaa
+/** 
+ * facebookLog, googleLog y emailLog
+ * log(proveedor) -> facebookLog, googleLog o emailLog
+*/
+
+
   //boton Google
   logContainer.querySelector('#icon-google').addEventListener('click', (e) => {
     e.preventDefault();
