@@ -10,12 +10,12 @@ export const viewLogin = () => {
     <img src = "./image/logo.jpg">
     <h5>!Bienvenido a nuestra Red Social!</h5>
     <form>
-    <input type="email" name = "Correo" id = "input-email" placeholder= "  Email" class="field-login"><br><br>
-    <input type="password" name = "Contraseña" id = "input-password" placeholder="  Password" class="field-login"> 
+    <input type="email" name = "Correo" id = "input-email" placeholder= "  Email" class="field"><br><br>
+    <input type="password" name = "Contraseña" id = "input-password" placeholder="  Password" class="field"> 
     <span id = "icon-notshow-password" ><i class="icon-inside-field fas fa-eye-slash"></i></span>
     <span id = "icon-show-password" class = "hide" ><i class="icon-inside-field  far fa-eye"></i></span><br><br>
     <p class="ms-error"></p>
-    <button type="submit" id = "btn-login" value="Log in" class="field-login button">Log in</button>
+    <button type="submit" id = "btn-login" value="Log in" class="field button">Log in</button>
     <p>O bien ingresa con...<p>
     </form>  
     <div class = "btn-fb-google">
