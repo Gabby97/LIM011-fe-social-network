@@ -1,15 +1,49 @@
-.display-flex, .main-init, .display-flex-column, .social-post, .input-post,.input-post-options{
+.display-flex,.container-posts, .main-init, .display-flex-column, .social-post, .input-post, .div-input-private, .div-input-img, .template-post{
   width: 100%;
   display: flex;
   justify-content: center;
   text-align: center;
 }
-
-.input-post-options{
-  justify-content: space-between;
-  margin-left: 10px;
+.container-posts{
+  margin-bottom: 20px;
 }
- .main-init{
+.header-post{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.div-input-private{
+  height: 1%;
+  justify-content: flex-end;
+  text-align: end;
+  margin-right: 10%;
+}
+
+.div-input-img{
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.icon-post-private{
+  margin-left: 15px;
+  font-size: 15px;
+  color:#BDBABA;
+}
+
+.icon-post-private:hover{
+  color: black;
+}
+
+.icon-post-img{
+  margin-left: 30px;
+  font-size: 20px;
+  color: rgb(22, 36, 189);
+}
+
+.main-init{
   height: 97vh;
 }
 
@@ -29,8 +63,11 @@
   height: 100%;
 }
 
-h5 {
+h5, h2 {
   font-family: 'Merienda One', cursive;
+}
+
+h5{
   font-size: 20px;
 }
 
@@ -102,7 +139,7 @@ p{
     margin-right: 15px;
 }
 
-.display-flex-column,.social-post, .input-post {
+.display-flex-column,.social-post, .input-post,.template-post {
   flex-direction: column;
   align-items: center;
 }
@@ -121,15 +158,9 @@ textarea{
   margin-top: 20px;
   border: none;
 }
-.left{
-  justify-content: flex-start;
-  align-items: left;
+.template-post{
+  margin-bottom: 20px;
 }
-.rigth{
-  align-items: right;
-  justify-content: flex-end;
-}
-
 .center{
   align-items: center;
   justify-content: center;
@@ -163,9 +194,11 @@ textarea{
 .input-post{
   width: 90%;
   border: 1px solid #58FF33;
+  border-radius: 10px;
   background-color: #DDFDBB;
 }
 
 .btn-publicar{
   width: 15%;
+  margin-left: 70%;
 }
