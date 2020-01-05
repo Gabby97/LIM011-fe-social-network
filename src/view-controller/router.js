@@ -10,6 +10,7 @@ export const viewTemplate = (router) => {
     base.innerHTML = '';
     switch (router) {
         case '':
+        case '#/':
             { return base.appendChild(components.vistaLogin()) }
         case '#/register':
             { return base.appendChild(components.vistaRegistro()) }

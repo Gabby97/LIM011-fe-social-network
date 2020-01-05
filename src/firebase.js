@@ -8,7 +8,6 @@
     appId: "1:2817858639:web:70c63c4b90a28861d8de3a",
     measurementId: "G-5WZN70EDCZ"
   })
-console.log(app);
 //Register 
 export const registerLog = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
 
@@ -34,19 +33,18 @@ export const currentUser = () => {
 }
   
 //crear post
-export const createPost = (uidUser, nameUser, photoUser, contentPost, publicationDate) => firebase.firestore()
+export const createPost = (user, contentPost) => firebase.firestore()
   .collection('posts')
   .add({
-    uidUser,
-    nameUser,
-    photoUser,
-    contentPost,
-    like: [],
-    publicationDate,
+    uidUser: user.id,
+    nameUser: user.name,
+    photoUser: user.photo,
+    contentPost: contentPost,
+    publicationDate: new Date()
   });
 
-export const getPost = () => firebase.firestore().collection("posts").get();
-
+export const getPost = () => firebase.firestore().collection('posts').orderBy('publicationDate', 'desc');
+  
 export const saveImgPost = (imgFile, uidUser) => {
   if (imgFile) {
     const upload = firebase.storage().ref(`images/${uidUser}/${imgFile.name}`)
