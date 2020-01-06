@@ -1,23 +1,19 @@
-//Register 
-export const registerLog = (email,password) => firebase.auth().createUserWithEmailAndPassword(email, password);
+const app = firebase.initializeApp({
+  apiKey: "AIzaSyDbD06CrpZ2ItVxy4f33eRlbFM8GX_CF9k",
+  authDomain: "social-network-b3bb7.firebaseapp.com",
+  databaseURL: "https://social-network-b3bb7.firebaseio.com",
+  projectId: "social-network-b3bb7",
+  storageBucket: "gs://social-network-b3bb7.appspot.com",
+  messagingSenderId: "2817858639",
+  appId: "1:2817858639:web:70c63c4b90a28861d8de3a",
+  measurementId: "G-5WZN70EDCZ"
+})
+console.log(app);
 
-//Login con google
-export const googleLog = () => firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
-
-//Login con email y password // Inicio de sesion
-export const emailLog = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
-
-//Login con facebook
-export const facebookLog = () => firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
-
-//Insertar en la base de datos
-export const createUserCollection = (register) => {
-  firebase.firestore().collection("users").doc(register.id).set({
-    name: register.name,
-    email: register.email,
-    photo: register.photo
-});
-}
-// propiedad que usuario esta activo//
-const currentUser = () => firebase.auth().currentUser;
-
+// Exportar el store para guardar datos en la base de datos 
+// que no es en tiempo real
+export const db = app.firestore();
+//Exportamos storage para la subida de archivos
+export const storage = app.storage();
+// Exortas el auth para la autenticacion
+export const auth = app.auth();
