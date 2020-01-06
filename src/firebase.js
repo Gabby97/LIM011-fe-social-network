@@ -44,7 +44,8 @@ export const createPost = (user, contentPost) => firebase.firestore()
   });
 
 export const getPost = () => {
-firebase.firestore().collection('posts').orderBy('publicationDate', 'desc');
+const final = firebase.firestore().collection('posts').orderBy('publicationDate', 'desc');
+return final;
 };
 //aquii
 export const editPost = (idPost, newText) => {
@@ -56,6 +57,7 @@ export const editPost = (idPost, newText) => {
 
 export const deletePost = (idDPost) => {
   const final = firebase.firestore().collection('posts').doc(idDPost).delete();
+  console.log(idDpost);
   return final;
 };  
   
