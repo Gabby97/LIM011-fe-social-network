@@ -43,24 +43,9 @@ export const createPost = (user, contentPost) => firebase.firestore()
     publicationDate: new Date()
   });
 
-export const getPost = () => {
-const final = firebase.firestore().collection('posts').orderBy('publicationDate', 'desc');
-return final;
-};
-//aquii
-export const editPost = (idPost, newText) => {
-  const final = firebase.firestore().collection('posts').doc(idPost).update({
-    text: newText,
-  });
-  return final;
-};
+export const getPost = () => firebase.firestore().collection('posts').orderBy('publicationDate', 'desc');
 
-export const deletePost = (idDPost) => {
-  const final = firebase.firestore().collection('posts').doc(idDPost).delete();
-  console.log(idDpost);
-  return final;
-};  
-  
+export const deletePost = (idPost) => firebase.firestore().collection('posts').doc(idPost).delete();
 export const saveImgPost = (imgFile, uidUser) => {
   if (imgFile) {
     const upload = firebase.storage().ref(`images/${uidUser}/${imgFile.name}`)

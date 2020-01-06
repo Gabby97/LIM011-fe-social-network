@@ -9,35 +9,30 @@ export default (user) => {
   <img class="photo-current-user" src='${user.photo}'>
       <h2>${user.name}</h2>
       <p>${user.email}<p>
-  <button class = "button">Cerrar Sesión</button>
+  <button class = "btn-cerrar-sesion">Cerrar Sesión</button>
   </section>
-  <section class= "social-post border">
-  <form class = "input-post">
+  <section class= "social-post">
+  <section class = "input-post">
+  <div class = header-private>
   <div class = div-input-private>
   <i class="fas fa-lock icon-post-private"></i>
-  <i class="fas fa-lock-open icon-post-private"></i>  
+  <i class="fas fa-lock-open icon-post-private"></i> 
+  </div>
   </div>
   <textarea id = "content-for-post" placeholder="¿Tienes algo que contarnos?"></textarea>
-  <div class = div-input-img>
+  <div class = footer-input-post>
   <div><i class="fas fa-images icon-post-img"></i></div>
-  <button id = "button-create-post" class = "field btn-publicar">Publicar</button>
+  <button id = "button-create-post" class = "btn-publicar">Publicar</button>
   <div>
-  </form>
-  <div class="container-posts display-flex-column" id="container-posts"></div>
   </section>
-  </main>`;
+  <div class="container-list-posts" id="container-posts"></div>
+  </section>
+   </main>`;
 
   postContainer.innerHTML = postTemplate;
-  const buttonCreatePost = postContainer.querySelector('#button-create-post');
-  const contentForPost = postContainer.querySelector('#content-for-post');
-  const btnPrivacy = postContainer.querySelector('#button-privacy-post');
-  const btnImgPost = postContainer.querySelector('#btn-img-post');
-  const imgToPost = postContainer.querySelector('#img-to-post');
-
-
   
   const updateSocialNetwork = () => {
-   const container = document.querySelector(".container-posts");
+   const container = postContainer.querySelector(".container-list-posts");
    container.innerHTML = '';
    getPost().onSnapshot((querySnapshot) => {
       querySnapshot.forEach((post) => {
@@ -46,13 +41,21 @@ export default (user) => {
         nameUser: post.data().nameUser,
         photoUser: post.data().photoUser,
         contentPost: post.data().contentPost,
-        datePost: post.data().publicationDate
+        datePost: post.data().publicationDate.toDate().toString()
       }
-     // userPost.datePost = userPost.datePost.substring(0,userPost.datePost.indexOf("GMT"));         
-      container.appendChild(templatePost(userPost));
+      userPost.datePost = userPost.datePost.substring(0,userPost.datePost.indexOf("GMT"));         
+      container.appendChild(templatePost(userPost, post.id));
     });
   })
   }
+  
+  updateSocialNetwork();
+
+  const buttonCreatePost = postContainer.querySelector('#button-create-post');
+  const contentForPost = postContainer.querySelector('#content-for-post');
+  const btnPrivacy = postContainer.querySelector('#button-privacy-post');
+  const btnImgPost = postContainer.querySelector('#btn-img-post');
+  const imgToPost = postContainer.querySelector('#img-to-post');
 
   buttonCreatePost.addEventListener('click', (e) => {
     e.preventDefault();
