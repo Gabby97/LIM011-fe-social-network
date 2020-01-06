@@ -8,7 +8,6 @@
     appId: "1:2817858639:web:70c63c4b90a28861d8de3a",
     measurementId: "G-5WZN70EDCZ"
   })
-
 //Register 
 export const registerLog = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
 
@@ -47,7 +46,6 @@ export const createPost = (user, contentPost) => firebase.firestore()
 export const getPost = () => firebase.firestore().collection('posts').orderBy('publicationDate', 'desc');
 
 export const deletePost = (idPost) => firebase.firestore().collection('posts').doc(idPost).delete();
-
 export const saveImgPost = (imgFile, uidUser) => {
   if (imgFile) {
     const upload = firebase.storage().ref(`images/${uidUser}/${imgFile.name}`)
@@ -57,10 +55,3 @@ export const saveImgPost = (imgFile, uidUser) => {
     
   }
 };
-
-
-
-  
-
-//post
-

@@ -1,3 +1,4 @@
+
 import {deletePost} from '../firebase.js';
 import {updateSocialNetwork} from '../view/post.js'
 
@@ -36,5 +37,10 @@ export const templatePost = (userPost, idPost) => {
                 });
         }
     });
+        /* editar.addEventListener('click', (e) => {
+         e.preventDefault();
+         editPost()
+
+        }) */
     return container;
 }

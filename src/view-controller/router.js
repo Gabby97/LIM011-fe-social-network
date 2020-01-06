@@ -25,4 +25,3 @@ export const viewTemplate = (router) => {
 const changeRoute = (route) => {
     window.location.hash = route;
   };
-
