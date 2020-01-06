@@ -15,7 +15,7 @@ export const viewLogin = () => {
     <span id = "icon-notshow-password" ><i class="icon-inside-field fas fa-eye-slash"></i></span>
     <span id = "icon-show-password" class = "hide" ><i class="icon-inside-field  far fa-eye"></i></span><br><br>
     <p class="ms-error"></p>
-    <button type="submit" id = "btn-login" value="Log in" class="field button">Log in</button>
+    <button type="submit" id = "btn-login" value="Log in" class="field button">Iniciar Sesion</button>
     <p>O bien ingresa con...<p>
     </form>  
     <div class = "btn-fb-google">

@@ -45,7 +45,9 @@ export const createPost = (user, contentPost) => firebase.firestore()
   });
 
 export const getPost = () => firebase.firestore().collection('posts').orderBy('publicationDate', 'desc');
-  
+
+export const deletePost = (idPost) => firebase.firestore().collection('posts').doc(idPost).delete();
+
 export const saveImgPost = (imgFile, uidUser) => {
   if (imgFile) {
     const upload = firebase.storage().ref(`images/${uidUser}/${imgFile.name}`)
