@@ -27,21 +27,20 @@ export const templatePost = (userPost) => {
         //e.preventDefault();
         eliminar.addEventListener('click', (e) => {
             e.preventDefault();
-            const idDpost = userPost.id;
          if(currentUser().uid === userPost.uid){
-             deletePost(idDpost)
+             deletePost(userPost.id)
              .then((doc) => {
                  console.log('texto eliminado', doc);
              })
              .catch((error) => {
-                 console.log('error ');    
+                 console.log(error);    
              })
          }
         });
-        /* editar.addEventListener('click', (e) => {
-         e.preventDefault();
-         editPost()
 
-        }) */
+        editar.addEventListener('click', (e) => {
+            e.preventDefault();
+
+        })
     return container;
 }
