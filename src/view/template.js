@@ -1,6 +1,6 @@
 
-import {deletePost} from '../firebase.js';
-//mport {updateSocialNetwork} from '../view/post.js'
+import { deletePost, editPost } from '../firebase.js';
+//import { updateSocialNetwork } from '../view/post.js';
 
 export const templatePost = (userPost, idPost) => {
     const container = document.createElement('div');
@@ -15,10 +15,10 @@ export const templatePost = (userPost, idPost) => {
     </div>
     <div><h1>${userPost.datePost}<h1><div>
     </section>
-    <p class = text-post>${userPost.contentPost}</p>
+    <p class = "text-post" >${userPost.contentPost}</p>
     <section class = footer-post>
     <div class = "icon-comment-like"><i class="far fa-thumbs-up margin-left"></i><i class="far fa-comments margin-left"></i></div>
-    <div class = "icon-edit-delete"><i class="fas fa-edit margin-left"></i><i class="fas fa-trash-alt margin-left" id="icon-delete-post"></i></div>
+    <div class = "icon-edit-delete"><i class="fas fa-edit margin-left" id="icon-edit-post"></i><i class="fas fa-trash-alt margin-left" id="icon-delete-post"></i></div>
     </section>`
     container.innerHTML = template;
     container.querySelector('#icon-delete-post').addEventListener('click', (e) => {
@@ -29,14 +29,35 @@ export const templatePost = (userPost, idPost) => {
         if (userPost.id === userId) {
             deletePost(postId)
                 .then((doc) => {
+                    container.innerHTML = '';
                     console.log('Documento eliminado', doc);
-                    //repintado
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         }
     });
+
+   container.querySelector('#icon-edit-post').addEventListener('click', (e) => {
+    e.preventDefault();
+    const btnEdit = e.target;
+    const idPost = btnEdit.closest('.container-posts').id;
+    const idUser = btnEdit.closest('container-posts').querySelector('.header-post').id;
+    const newTypeText = btnEdit.closest('.container-posts').querySelector('.text-post').value;
+    
+ 
+    if(userPost.id === idUser){
+        editPost(idPost, newTypeText)
+        .then((doc) => {
+            
+            console.log('texto editado', doc);
+        })
+        .catch((error) => {
+            console.log(error);
+        }) 
+    }
+
+    }) 
     return container;
 }
         /* editar.addEventListener('click', (e) => {

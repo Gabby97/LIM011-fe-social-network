@@ -45,11 +45,12 @@ export default (user) => {
       }
       userPost.datePost = userPost.datePost.substring(0,userPost.datePost.indexOf("GMT"));         
       container.appendChild(templatePost(userPost, post.id));
+      
     });
   })
   }
   
-  updateSocialNetwork();
+   updateSocialNetwork();
 
   const buttonCreatePost = postContainer.querySelector('#button-create-post');
   const contentForPost = postContainer.querySelector('#content-for-post');
@@ -61,6 +62,7 @@ export default (user) => {
     e.preventDefault();
     createPost(user, contentForPost.value).then(() => {
       /*clearFormPost();*/
+      //contentForPost.value = '';
       updateSocialNetwork();
     }).catch(error => console.log(error));
   });
