@@ -22,7 +22,3 @@ export const viewTemplate = (router) => {
         break; 
     }
 };
-
-const changeRoute = (route) => {
-    window.location.hash = route;
-  };
