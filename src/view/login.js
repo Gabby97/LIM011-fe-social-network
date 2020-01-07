@@ -1,4 +1,4 @@
-import { emailLog, googleLog, facebookLog } from '../firebase.js';
+import { facebookLoginEvent, googleLoginEvent, emailLoginEvent, hidePassword, showPassword } from '../controller/login-controller.js';
 
 export const viewLogin = () => {
   const logContainer = document.createElement('div');
@@ -10,8 +10,8 @@ export const viewLogin = () => {
     <img src = "./image/logo.jpg">
     <h5>!Bienvenido a nuestra Red Social!</h5>
     <form>
-    <input type="email" name = "Correo" id = "input-email" placeholder= "  Email" class="field"><br><br>
-    <input type="password" name = "Contraseña" id = "input-password" placeholder="  Password" class="field"> 
+    <input type="email" name = "Correo" placeholder= "  Email" class="field" id = field-email><br><br>
+    <input type="password" name = "Contraseña" placeholder="  Password" class="field" id = field-password> 
     <span id = "icon-notshow-password" ><i class="icon-inside-field fas fa-eye-slash"></i></span>
     <span id = "icon-show-password" class = "hide" ><i class="icon-inside-field  far fa-eye"></i></span><br><br>
     <p class="ms-error"></p>
@@ -27,83 +27,13 @@ export const viewLogin = () => {
   </main>`;
 
   logContainer.innerHTML = loginTemplate;
-  //vaiables globales
-  const email = logContainer.querySelector('#input-email');
-  const password = logContainer.querySelector('#input-password');
-  const errorMsg = logContainer.querySelector('.ms-error');
-  const iconNotPassword = logContainer.querySelector('#icon-notshow-password');
-  const iconShowPassword = logContainer.querySelector('#icon-show-password');
 
-  //boton mostrar-ocultar contrasena
-  iconNotPassword.addEventListener('click', (event) => { 
-    password.setAttribute('type', 'text');
-    iconNotPassword.classList.add('hide');
-    iconShowPassword.classList.remove('hide');
-  });
-
-  iconShowPassword.addEventListener('click', (event) => { 
-    password.setAttribute('type', 'password');
-    iconNotPassword.classList.remove('hide');
-    iconShowPassword.classList.add('hide');
-  });
-
-
-  //boton Face
-  logContainer.querySelector('#icon-facebook').addEventListener('click', (e) => {
-    e.preventDefault();
-    facebookLog().then(() => {window.location.hash = '#/post';})
-      .catch((error) => {console.log(error.message);});
-  });
-
-//Pruebaaaa
-/** 
- * facebookLog, googleLog y emailLog
- * log(proveedor) -> facebookLog, googleLog o emailLog
-*/
-
-
-  //boton Google
-  logContainer.querySelector('#icon-google').addEventListener('click', (e) => {
-    e.preventDefault();
-    googleLog().then(() => {window.location.hash = '#/post';})
-      .catch((error) => {console.log(error.message);});
-  });
-
-  //boton login
-  logContainer.querySelector('button[type = "submit"]').addEventListener('click', (e) => {
-    e.preventDefault();
-    emailLog(email.value, password.value).then(() => {window.location.hash = '#/post';})
-      .catch((error) => { // Error
-        switch (error.code) {
-          case 'auth/invalid-email':
-            errorEmail();
-            errorMsg.innerHTML = '**El formato del correo ingresado no es valido, verifica e intente de nuevo**';
-            break;
-          case 'auth/user-not-found':
-            errorEmail();
-            errorMsg.innerHTML = '**No hay usuario registrado con ese correo, verifica e intente de nuevo**';
-            break;
-          case 'auth/wrong-password':
-            errorPassword();
-            errorMsg.innerHTML = '**La contraseña no es válida, verifica e intente de nuevo**';
-            break;
-          default:
-            console.log(error);
-            break;
-        }
-      });
-  })
-
-  const errorEmail = () => {
-    password.classList.remove('field-error');
-    email.classList.add('field-error');
-  }
-
-  const errorPassword = () => {
-    email.classList.remove('field-error');
-    password.classList.add('field-error');
-  }
-
+  //eventos
+  logContainer.querySelector('#icon-facebook').addEventListener('click', facebookLoginEvent);
+  logContainer.querySelector('#icon-google').addEventListener('click', googleLoginEvent);
+  logContainer.querySelector('button[type = "submit"]').addEventListener('click', emailLoginEvent);
+  logContainer.querySelector('#icon-notshow-password').addEventListener('click',hidePassword);
+  logContainer.querySelector('#icon-show-password').addEventListener('click',showPassword);
 
   return logContainer;
 };
