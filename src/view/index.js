@@ -1,7 +1,8 @@
 import { viewLogin }  from '../view/login.js';
 import  viewRegister  from '../view/register.js';
-import viewPost from '../view/post.js';
-import  Different from './404.js';
+import  Different  from './404.js';
+import viewPost from '../view/post.js'
+//import { viewProfileUser } from '../view/side-face.js'
 
 
 const components = {
@@ -9,6 +10,7 @@ const components = {
     vistaRegistro: viewRegister,
     vistaPost: viewPost,
     different: Different,
+    vistaPost: viewPost,
 }
 
 

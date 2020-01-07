@@ -1,5 +1,6 @@
-
 import { components } from '../view/index.js';
+import { currentUser } from '../firebase.js'
+
 
 // vista de templates
 export const viewTemplate = (router) => {
@@ -9,11 +10,13 @@ export const viewTemplate = (router) => {
     base.innerHTML = '';
     switch (router) {
         case '':
+        case '#/':
             { return base.appendChild(components.vistaLogin()) }
         case '#/register':
             { return base.appendChild(components.vistaRegistro()) }
         case '#/post':
-            { return base.appendChild(components.vistaPost())}
+            { return base.appendChild(components.vistaPost(currentUser()));
+        }
         default: 
         break; 
     }
@@ -22,44 +25,3 @@ export const viewTemplate = (router) => {
 const changeRoute = (route) => {
     window.location.hash = route;
   };
-
-  console.log("maray");
-/*case '#/login':
-    base.innerHTML = '';
-    base.appendChild(viewLogin());
-    break;
-case '#/register':
-    base.appendChild(viewRegister());
-    break;*/
-
-//cambio de templates / vistas
-/*export const changeTemplate = (hash) => {
-    if (hash === '#/' || hash === '' || hash === '#'){
-    return viewTemplate('#/login');
-    }
-    return viewTemplate(hash);
-};
-
-export const init = () => {
-    changeTemplate(window.location.hash);
-    window.addEventListener('hashchange', () => changeTemplate(window.location.hash));
-};*/
-
-/*export const changeTmp = (hash) => {
-    const id = hash.split('/')[1];
-    const sectionMain = document.getElementById('container');
-    sectionMain.innerHTML = '';
-
-    switch (hash) {
-        case '':
-        case '#':
-        case '#/':
-            { return sectionMain.appendChild(components.home()); }
-        case '#/lugares':
-            { return sectionMain.appendChild(components[id]()); }
-        default:
-            return sectionMain.appendChild(components.different())
-    }
-};*/
-
-

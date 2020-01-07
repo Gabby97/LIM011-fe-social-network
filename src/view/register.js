@@ -1,24 +1,23 @@
-import { registerLog } from '../auth.js';
-import { createUserCollection } from '../app.js';
+import { registerLog } from '../firebase.js'
 
 export default () => {
   const regContainer = document.createElement('div');
   const registerTemplate = `
   <main class="main-init">
-  <section class="init-img"><img src="../src/image/header-phone.jpg" alt=""></section>
-  <section>
-  <h2>codebook</h2>
-  <h5>!Bienvenida, coder!</h5>
+    <section class="init-banner"><img src = "./image/index-2.jpg"></section>
+    <section class = "init-login">
+    <img src = "./image/logo.jpg">
+    <h5>Registre sus datos</h5>
   <form>
-  <input type="text" name = "Name" id = "input-name" placeholder= "  Name" class="field-login"><br><br>
-  <input type="email" name = "Correo" id = "input-email" placeholder= "  Email" class="field-login"><br><br>
-  <input type="password" name = "Contraseña" id = "input-password" placeholder="  Password" class="field-login"> 
+  <input type="text" name = "Name" id = "input-name" placeholder= "  Name" class="field"><br><br>
+  <input type="email" name = "Correo" id = "input-email" placeholder= "  Email" class="field"><br><br>
+  <input type="password" name = "Contraseña" id = "input-password" placeholder="  Password" class="field"> 
   <span id = "icon-notshow-password" ><i class="icon-inside-field fas fa-eye-slash"></i></span>
   <span id = "icon-show-password" class = "hide" ><i class="icon-inside-field  far fa-eye"></i></span><br><br>
   <p class="ms-error"></p>
-  <button type="submit" id = "btn-login" value="Registrar" class="field-login button">Log in</button><br><br>
+  <button type="submit" id = "btn-login" value="Registrar" class="field button">Log in</button><br><br>
   </form>  
-  <label>¿Ya tienes una cuenta?&nbsp;<a href="#/" id="iniciar-sesion">Iniciar Sesión</a></label>
+  <p>¿Ya tienes una cuenta?&nbsp;<a href="#/">Iniciar Sesión</a></p>
 </section>
 </main>`;
 
@@ -45,21 +44,16 @@ export default () => {
     iconShowPassword.classList.add('hide');
   });
 
+  iconShowPassword.addEventListener('click', (event) => { 
+    password.setAttribute('type', 'password');
+    iconNotPassword.classList.remove('hide');
+    iconShowPassword.classList.add('hide');
+  });
 
   //boton registrar
-  regContainer.querySelector('button[type = "submit"]').addEventListener('click', (event) => {
-    event.preventDefault();
-    registerLog(email.value, password.value).then((response) => {
-      const register = {
-        id: response.user.uid,
-        name: name.value,
-        email: email.value,
-        photo: '../image/photo.png'
-      }
-      createUserCollection(register);
-      window.location.hash = '#/post';
-
-    })
+  regContainer.querySelector('button[type = "submit"]').addEventListener('click', (e) => {
+    e.preventDefault();
+    registerLog(email.value, password.value).then(() => {window.location.hash = '#/post';})
       .catch((error) => {
         switch (error.code) {
           case 'auth/invalid-email':
@@ -98,3 +92,4 @@ export default () => {
 
   return regContainer;
 };
+

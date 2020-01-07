@@ -1,29 +1,28 @@
-import { emailLog, googleLog, facebookLog } from '../auth.js';
-import { createUserCollection } from '../app.js';
+import { emailLog, googleLog, facebookLog } from '../firebase.js';
 
 export const viewLogin = () => {
   const logContainer = document.createElement('div');
   logContainer.innerHTML = '';
   const loginTemplate = `
     <main class="main-init">
-    <section class="init-img"><img src="../src/image/header-phone.jpg" alt=""></section>
-    <section>
-    <h2>codebook</h2>
-    <h5>!Bienvenida, coder!</h5>
+    <section class="init-banner"><img src = "./image/index-2.jpg"></section>
+    <section class = "init-login">
+    <img src = "./image/logo.jpg">
+    <h5>!Bienvenido a nuestra Red Social!</h5>
     <form>
-    <input type="email" name = "Correo" id = "input-email" placeholder= "  Email" class="field-login"><br><br>
-    <input type="password" name = "Contraseña" id = "input-password" placeholder="  Password" class="field-login"> 
+    <input type="email" name = "Correo" id = "input-email" placeholder= "  Email" class="field"><br><br>
+    <input type="password" name = "Contraseña" id = "input-password" placeholder="  Password" class="field"> 
     <span id = "icon-notshow-password" ><i class="icon-inside-field fas fa-eye-slash"></i></span>
     <span id = "icon-show-password" class = "hide" ><i class="icon-inside-field  far fa-eye"></i></span><br><br>
     <p class="ms-error"></p>
-    <button type="submit" id = "btn-login" value="Log in" class="field-login button">Log in</button>
-    <p class="registro">O bien ingresa con...</p>
+    <button type="submit" id = "btn-login" value="Log in" class="field button">Iniciar Sesion</button>
+    <p>O bien ingresa con...<p>
     </form>  
     <div class = "btn-fb-google">
-      <a id="icon-facebook" href="#"><img id = "icon-facebook" src="./image/facebook.png" class = "icons" alt="facebook icon"></a>
-      <a id="icon-google" href="#"><img id = "icon-email" src="./image/search.png" class = "icons" alt="emai icon"></a>   
+      <a id="icon-facebook" href="#"><i class="fab fa-facebook icon-face"></i></a>
+      <a id="icon-google" href="#"><i class="fab fa-google-plus icon-google"></i></a>   
     </div>  
-    <label>¿No tienes una cuenta?&nbsp;<a href="#/register" id="registrate">Regístrate.</a></label>
+    <p>¿No tienes una cuenta?&nbsp;<a href="#/register" id="registrate">Regístrate.</a></p>
   </section>
   </main>`;
 
@@ -50,21 +49,10 @@ export const viewLogin = () => {
 
 
   //boton Face
-  logContainer.querySelector('#icon-facebook').addEventListener('click', (event) => {
-    event.preventDefault();
-    facebookLog().then((response) => {
-      window.location.hash = '#/post';
-      const register = {
-        id: response.user.uid,
-        name: response.user.displayName,
-        email: response.user.email,
-        photo: response.user.photoURL
-      }
-      createUserCollection(register);
-    })
-      .catch((error) => {
-        console.log(error.message);
-      });
+  logContainer.querySelector('#icon-facebook').addEventListener('click', (e) => {
+    e.preventDefault();
+    facebookLog().then(() => {window.location.hash = '#/post';})
+      .catch((error) => {console.log(error.message);});
   });
 
 //Pruebaaaa
@@ -75,29 +63,16 @@ export const viewLogin = () => {
 
 
   //boton Google
-  logContainer.querySelector('#icon-google').addEventListener('click', (event) => {
-    event.preventDefault();
-    googleLog().then((response) => {
-      window.location.hash = '#/post';
-      const register = {
-        id: response.user.uid,
-        name: response.additionalUserInfo.profile.name,
-        email: response.additionalUserInfo.profile.email,
-        photo: response.additionalUserInfo.profile.picture
-      }
-      createUserCollection(register);
-    })
-      .catch((error) => {
-        console.log(error.message);
-      });
+  logContainer.querySelector('#icon-google').addEventListener('click', (e) => {
+    e.preventDefault();
+    googleLog().then(() => {window.location.hash = '#/post';})
+      .catch((error) => {console.log(error.message);});
   });
 
   //boton login
-  logContainer.querySelector('button[type = "submit"]').addEventListener('click', (event) => {
-    event.preventDefault();
-    emailLog(email.value, password.value).then((response) => {
-      //  window.location.hash = '#/social-network';
-    })
+  logContainer.querySelector('button[type = "submit"]').addEventListener('click', (e) => {
+    e.preventDefault();
+    emailLog(email.value, password.value).then(() => {window.location.hash = '#/post';})
       .catch((error) => { // Error
         switch (error.code) {
           case 'auth/invalid-email':
