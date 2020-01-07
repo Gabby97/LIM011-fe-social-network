@@ -15,10 +15,10 @@ export const paintPost = (userPost, idPost) => {
     </div>
     <div><h1>${datePost}<h1><div>
     </section>
-    <p class = text-post>${userPost.contentPost}</p>
+    <p class = "text-post" >${userPost.contentPost}</p>
     <section class = footer-post>
     <div class = "icon-comment-like"><i class="far fa-thumbs-up margin-left"></i><i class="far fa-comments margin-left"></i></div>
-    <div class = "icon-edit-delete"><i class="fas fa-edit margin-left"></i><i class="fas fa-trash-alt margin-left" id="icon-delete-post"></i></div>
+    <div class = "icon-edit-delete"><i class="fas fa-edit margin-left" id="icon-edit-post"></i><i class="fas fa-trash-alt margin-left" id="icon-delete-post"></i></div>
     </section>`
     container.innerHTML = template;
     document.querySelector('.container-list-posts').appendChild(container);
@@ -28,7 +28,4 @@ export const paintPost = (userPost, idPost) => {
 
     return container;
 }
-        /* editar.addEventListener('click', (e) => {
-         e.preventDefault();
-         editPost();
-        })*/
+     
