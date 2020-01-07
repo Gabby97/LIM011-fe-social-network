@@ -1,18 +1,19 @@
-import {deletePost} from '../firebase.js';
-import {updateSocialNetwork} from '../view/post.js'
+import {deletePostEvent} from '../controller/template-controller.js';
 
-export const templatePost = (userPost, idPost) => {
+export const paintPost = (userPost, idPost) => {
     const container = document.createElement('div');
     container.classList.add('container-posts');
     container.id = idPost;
+    let datePost = userPost.publicationDate.toDate().toString();
+    datePost = datePost.substring(0, datePost.indexOf("GMT"));
     container.innerHTML = '';
     const template =
-    `<section class = header-post id = ${userPost.id}>
+    `<section class = header-post id = ${userPost.uidUser}>
     <div class = header-name-photo>
     <img class="post-user-photo" src="${userPost.photoUser}">
     <h2 class = user-name-post>${userPost.nameUser}<h2>
     </div>
-    <div><h1>${userPost.datePost}<h1><div>
+    <div><h1>${datePost}<h1><div>
     </section>
     <p class = text-post>${userPost.contentPost}</p>
     <section class = footer-post>
@@ -20,21 +21,10 @@ export const templatePost = (userPost, idPost) => {
     <div class = "icon-edit-delete"><i class="fas fa-edit margin-left"></i><i class="fas fa-trash-alt margin-left" id="icon-delete-post"></i></div>
     </section>`
     container.innerHTML = template;
-    container.querySelector('#icon-delete-post').addEventListener('click', (e) => {
-        e.preventDefault();
-        const btnDelete = e.target;
-        const postId = btnDelete.closest('.container-posts').id;
-        const userId = btnDelete.closest('.container-posts').querySelector('.header-post').id;
-        if (userPost.id === userId) {
-            deletePost(postId)
-                .then((doc) => {
-                    console.log('Documento eliminado', doc);
-                    //repintado
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        }
-    });
+    document.querySelector('.container-list-posts').appendChild(container);
+
+    //eventos 
+    container.querySelector('#icon-delete-post').addEventListener('click', deletePostEvent);
+
     return container;
 }
