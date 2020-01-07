@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 import {deletePostEvent} from '../controller/template-controller.js';
-=======
-
-import {deletePost} from '../firebase.js';
-//mport {updateSocialNetwork} from '../view/post.js'
->>>>>>> 1931ecd8ba15c01793b922dcb00428bdb25eb627
 
 export const paintPost = (userPost, idPost) => {
     const container = document.createElement('div');

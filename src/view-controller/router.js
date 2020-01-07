@@ -23,9 +23,3 @@ export const viewTemplate = (router) => {
     }
 };
 
-<<<<<<< HEAD
-=======
-const changeRoute = (route) => {
-    window.location.hash = route;
-  };
->>>>>>> 1931ecd8ba15c01793b922dcb00428bdb25eb627
