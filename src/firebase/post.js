@@ -12,8 +12,11 @@ export const savePost = (user, contentPost) => firebase.firestore()
     publicationDate: new Date()
   });
 
-//obtener post
+//obtener post  
 export const getPost = () => firebase.firestore().collection('posts').orderBy('publicationDate', 'desc');
-
 //borrar post
 export const deletePost = (idPost) => firebase.firestore().collection('posts').doc(idPost).delete();
+// editar post
+export const editPost = (idPost, newText) => firebase.firestore().collection('posts').doc(idPost).update({
+  contentPost: newText,
+});

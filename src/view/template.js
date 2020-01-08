@@ -1,4 +1,4 @@
-import {deletePostEvent} from '../controller/template-controller.js';
+import { deletePostEvent, editPostEvent } from '../controller/template-controller.js';
 
 export const paintPost = (userPost, idPost) => {
     const container = document.createElement('div');
@@ -8,7 +8,7 @@ export const paintPost = (userPost, idPost) => {
     datePost = datePost.substring(0, datePost.indexOf("GMT"));
     container.innerHTML = '';
     const template =
-    `<section class = header-post id = ${userPost.uidUser}>
+    `<section class = header-post id container-posts'= ${userPost.uidUser}>
     <div class = header-name-photo>
     <img class="post-user-photo" src="${userPost.photoUser}">
     <h2 class = user-name-post>${userPost.nameUser}<h2>
@@ -25,6 +25,8 @@ export const paintPost = (userPost, idPost) => {
 
     //eventos 
     container.querySelector('#icon-delete-post').addEventListener('click', deletePostEvent);
+
+    container.querySelector('#icon-edit-post').addEventListener('click', editPostEvent);
 
     return container;
 }
