@@ -22,4 +22,3 @@ export const viewTemplate = (router) => {
         break; 
     }
 };
-
