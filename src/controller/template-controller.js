@@ -16,3 +16,20 @@ export const deletePostEvent = (event) => {
             });
     }
 }
+
+export const ownerPost = (userPost) =>{
+    if(userPost.uidUser === currentUser().id)
+    return 1;
+    else
+    return 0;
+}
+
+export const privacityPostEvent = (event) =>{
+
+}
+
+export const commentPostEvent = (event) => {
+    console.log(event);
+    
+}
+

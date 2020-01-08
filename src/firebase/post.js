@@ -1,6 +1,6 @@
 
 //crear post
-export const savePost = (user, contentPost) => firebase.firestore()
+export const savePost = (user, contentPost, type) => firebase.firestore()
   .collection('posts')
   .add({
     uidUser: user.id,
@@ -8,7 +8,7 @@ export const savePost = (user, contentPost) => firebase.firestore()
     photoUser: user.photo,
     contentPost: contentPost,
     likes: 0,
-    privacity: 0,
+    privacity: type,
     publicationDate: new Date()
   });
 
