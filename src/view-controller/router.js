@@ -16,7 +16,7 @@ export const viewTemplate = (router) => {
         case '#/register':
             { return base.appendChild(components.vistaRegistro()) }
         case '#/mikuna':
-            { return base.appendChild(components.vistaMikuna(currentUser()));
+            { return base.appendChild(components.vistaMikuna());
         }
         default: 
         break; 

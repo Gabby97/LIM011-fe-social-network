@@ -17,3 +17,7 @@ export const getPost = () => firebase.firestore().collection('posts').orderBy('p
 
 //borrar post
 export const deletePost = (idPost) => firebase.firestore().collection('posts').doc(idPost).delete();
+
+export const updatePost = (idPost, parameter, value) => db.collection("posts").doc(idPost).update({
+  parameter: value,
+});
