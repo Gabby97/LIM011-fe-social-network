@@ -1,4 +1,10 @@
-import { facebookLoginEvent, googleLoginEvent, emailLoginEvent, hidePassword, showPassword } from '../controller/login-controller.js';
+import {
+  facebookLoginEvent,
+  googleLoginEvent,
+  emailLoginEvent,
+  hidePassword,
+  showPassword,
+} from '../controller/login-controller.js';
 
 export const viewLogin = () => {
   const logContainer = document.createElement('div');
@@ -27,13 +33,11 @@ export const viewLogin = () => {
   </main>`;
 
   logContainer.innerHTML = loginTemplate;
-
-  //eventos
+  //  eventos
   logContainer.querySelector('#icon-facebook').addEventListener('click', facebookLoginEvent);
   logContainer.querySelector('#icon-google').addEventListener('click', googleLoginEvent);
   logContainer.querySelector('button[type = "submit"]').addEventListener('click', emailLoginEvent);
-  logContainer.querySelector('#icon-notshow-password').addEventListener('click',hidePassword);
-  logContainer.querySelector('#icon-show-password').addEventListener('click',showPassword);
-
+  logContainer.querySelector('#icon-notshow-password').addEventListener('click', hidePassword);
+  logContainer.querySelector('#icon-show-password').addEventListener('click', showPassword);
   return logContainer;
 };

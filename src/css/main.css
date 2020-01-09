@@ -253,8 +253,6 @@ a{
 
 .block{
   display: block;
-<<<<<<< HEAD
-=======
 }
 
 .photo-current-user {
@@ -321,5 +319,4 @@ textarea{
 .btn-publicar{
   width: 20%;
   margin-left: 60%;
->>>>>>> 1931ecd8ba15c01793b922dcb00428bdb25eb627
 }

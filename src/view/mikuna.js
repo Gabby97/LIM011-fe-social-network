@@ -1,4 +1,4 @@
-import {createPostEvent, paintMikunaPost, iconPrivateEvent} from '../controller/mikuna-controller.js'
+import { createPostEvent, paintMikunaPost } from '../controller/mikuna-controller.js';
 
 export default (user) => {
   const mikunaMain = document.createElement('div');
@@ -31,6 +31,6 @@ export default (user) => {
   mikunaMain.innerHTML = postTemplate;
   paintMikunaPost(user);
   mikunaMain.querySelector('#button-create-post').addEventListener('click', createPostEvent);
-  //trabajar privacidad icono
+  // trabajar privacidad icono
   return mikunaMain;
-}
+};

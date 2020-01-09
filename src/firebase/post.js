@@ -1,19 +1,19 @@
-
-//crear post
+// crear post
 export const savePost = (user, contentPost) => firebase.firestore()
   .collection('posts')
   .add({
     uidUser: user.id,
     nameUser: user.name,
     photoUser: user.photo,
-    contentPost: contentPost,
+    contentPost1: contentPost,
     likes: 0,
     privacity: 0,
-    publicationDate: new Date()
+    publicationDate: new Date(),
   });
-
-//obtener post
+// obtener post
 export const getPost = () => firebase.firestore().collection('posts').orderBy('publicationDate', 'desc');
-
-//borrar post
-export const deletePost = (idPost) => firebase.firestore().collection('posts').doc(idPost).delete();
+// borrar post
+export const deletePost = idPost => firebase.firestore().collection('posts').doc(idPost).delete();
+// contabilizar los likes
+// export const likesPost = (idPost, count)  => firebase.firestore().collection('posts')
+//   .doc(idPost).likes;
