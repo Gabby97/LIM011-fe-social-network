@@ -1,6 +1,8 @@
 import {createPostEvent, paintMikunaPost, iconPrivateEvent} from '../controller/mikuna-controller.js'
+import { currentUser } from '../firebase/auth.js';
 
-export default (user) => {
+export default () => {
+  const user = currentUser();
   const mikunaMain = document.createElement('div');
   const postTemplate = `
   <main class = "display-flex">

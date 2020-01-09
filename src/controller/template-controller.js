@@ -1,5 +1,5 @@
-import {deletePost} from '../firebase/post.js'
-import {currentUser} from '../firebase/auth.js'
+import { deletePost, updatePost } from '../firebase/post.js'
+import { currentUser } from '../firebase/auth.js'
 
 export const deletePostEvent = (event) => {
     event.preventDefault();
@@ -17,19 +17,21 @@ export const deletePostEvent = (event) => {
     }
 }
 
-export const ownerPost = (userPost) =>{
-    if(userPost.uidUser === currentUser().id)
-    return 1;
+export const ownerPost = (userPost) => {
+    if (userPost.uidUser === currentUser().id)
+        return 1;
     else
-    return 0;
+        return 0;
 }
 
-export const privacityPostEvent = (event) =>{
-
+export const privacityPostEvent = (event) => {
+    console.log(event);    
+    const postId = event.target.closest('.container-posts').id;
+   // updatePost(postId,privacity,);
 }
 
 export const commentPostEvent = (event) => {
     console.log(event);
-    
+
 }
 
