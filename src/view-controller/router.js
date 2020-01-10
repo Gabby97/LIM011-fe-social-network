@@ -1,10 +1,10 @@
 import { components } from '../view/index.js';
-import { currentUser } from '../firebase/auth.js'
+//  import { currentUser } from '../firebase/auth.js';
 
 
-// vista de templates
+//  vista de templates
 export const viewTemplate = (router) => {
-    //base es la caja basia que debomos llenar - extraido desde el html
+    //  base es la caja basia que debomos llenar - extraido desde el html
     const base = document.getElementById('base');
     //' ' limpia el contenido de un elemento 
     base.innerHTML = '';

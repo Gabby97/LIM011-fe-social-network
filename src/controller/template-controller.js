@@ -5,7 +5,7 @@ export const deletePostEvent = (event) => {
     console.log(event);
     
     event.preventDefault();
-    const btnDelete = event.target;
+    const btnDelete = event.target; //hay muchos iconos delete 
     const postId = btnDelete.closest('.container-posts').id;
     const userId = btnDelete.closest('.container-posts').querySelector('.header-post').id;
     if (currentUser().id === userId) {
@@ -29,10 +29,8 @@ const newText = btnEdit.closest('.container-posts').querySelector('.text-post').
 const userId = btnEdit.closest('.container-posts').querySelector('.header-post').id;
 
 if (currentUser().id === userId){
-    editPost(idPost, newText)
+    editPost(idPost, newText)        
     .then((doc) => {
-        console.log(postEDit);
-        
         console.log('se edito!', doc);
     })
     .catch((error) => {
@@ -51,7 +49,7 @@ export const ownerPost = (userPost) =>{
 export const privacityPostEvent = (event) => {
     console.log(event);    
     const postId = event.target.closest('.container-posts').id;
-   // updatePost(postId,privacity,);
+   updatePost(postId,privacity,);
 }
 
 export const commentPostEvent = (event) => {

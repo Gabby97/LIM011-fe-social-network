@@ -1,5 +1,4 @@
-//import { registerAuth } from '../controller/register-controller.js'
-import { registerLog } from '../firebase/auth.js';
+import { registerLogEvent, hidePassword, showPassword } from '../controller/register-controller.js';
 
 export default () => {
   const regContainer = document.createElement('div');
@@ -24,18 +23,9 @@ export default () => {
 
   regContainer.innerHTML = registerTemplate;
 
-  //eventos
-  regContainer.querySelector('button[type = "submit"]').addEventListener('click', (event) => {
-    const register = {
-      name: regContainer.querySelector('#input-name').value,
-      email: regContainer.querySelector('#input-email').value,
-      password: regContainer.querySelector('#field-password').value,
-    }
-    registerLog(register);
-  });
-  //regContainer.querySelector('#icon-notshow-password').addEventListener('click',hidePassword);
-  //regContainer.querySelector('#icon-show-password').addEventListener('click',showPassword);
-
+  //  eventos
+  regContainer.querySelector('button[type = "submit"]').addEventListener('click', registerLogEvent);
+  regContainer.querySelector('#icon-notshow-password').addEventListener('click', hidePassword);
+  regContainer.querySelector('#icon-show-password').addEventListener('click', showPassword);
   return regContainer;
 };
-
