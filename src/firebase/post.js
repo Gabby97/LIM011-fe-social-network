@@ -22,3 +22,7 @@ export const deletePost = (idPost) => firebase.firestore().collection('posts').d
 export const editPost = (idPost, newText) => firebase.firestore().collection('posts').doc(idPost).update({
   contentPost: newText,
 });
+
+export const updatePost = (idPost, parameter, value) => db.collection("posts").doc(idPost).update({
+  parameter: value,
+});

@@ -41,7 +41,7 @@ export const emailLoginEvent = (event) => {
         });
 }
 
-export const registerLogEvent = (event) => {
+/*export const registerLogEvent = (event) => {
     event.preventDefault();
     const email = document.querySelector('#field-email');
     const password = document.querySelector('#field-password');
@@ -70,7 +70,7 @@ export const registerLogEvent = (event) => {
             break;
         }
       });
-}
+}*/
 
 export const hidePassword = () => {
     const password = document.querySelector('#field-password');

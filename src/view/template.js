@@ -1,4 +1,4 @@
-import { deletePostEvent, commentPostEvent, ownerPost, editPostEvent} from '../controller/template-controller.js';
+import { deletePostEvent, commentPostEvent, ownerPost, privacityPostEvent, editPostEvent } from '../controller/template-controller.js';
 
 export const paintPost = (userPost, idPost) => {
     const container = document.createElement('div');
@@ -33,7 +33,7 @@ export const paintPost = (userPost, idPost) => {
     //eventos 
     container.querySelector('#icon-delete-post').addEventListener('click', deletePostEvent);
     container.querySelector('#icon-comment').addEventListener('click', commentPostEvent);
-  //  container.querySelector('#select-privacity').addEventListener('change', privacityPostEvent);
+    container.querySelector('#select-privacity').addEventListener('change', privacityPostEvent);
 
     container.querySelector('#icon-edit-post').addEventListener('click', editPostEvent);
     //container.querySelector('#btn-save').addEventListener('click');

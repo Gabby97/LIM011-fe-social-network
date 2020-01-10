@@ -1,6 +1,14 @@
 
 //Register 
-export const registerLog = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
+export const registerLog = (register) => 
+firebase.auth().createUserWithEmailAndPassword(register.email, register.password);
+
+export const createUserCollection = (register, id) => {
+    firebase.firestore().collection("users").doc(id).set({
+      nombre: register.name,
+      correo: regiter.email 
+  });
+  }
 
 //Login con google
 export const googleLog = () => firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
@@ -25,3 +33,4 @@ export const currentUser = () => {
 
 //cerrar sesion
 export const signOut = () => firebase.auth().signOut();
+
