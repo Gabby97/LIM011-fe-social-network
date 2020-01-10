@@ -1,14 +1,14 @@
 import { deletePostEvent, commentPostEvent, ownerPost, privacityPostEvent } from '../controller/template-controller.js';
 
 export const paintPost = (userPost, idPost) => {
-    const container = document.createElement('div');
-    container.classList.add('container-posts');
-    container.id = idPost;
-    let datePost = userPost.publicationDate.toDate().toString();
-    datePost = datePost.substring(0, datePost.indexOf("GMT"));
-    container.innerHTML = '';
-    const template =
-    `<section class = header-post id = ${userPost.uidUser}>
+  const container = document.createElement('div');
+  container.classList.add('container-posts');
+  container.id = idPost;
+  let datePost = userPost.publicationDate.toDate().toString();
+  datePost = datePost.substring(0, datePost.indexOf('GMT'));
+  container.innerHTML = '';
+  const template = `
+    <section class = header-post id = ${userPost.uidUser}>
     <div class = header-name-photo>
     <img class="post-user-photo" src="${userPost.photoUser}">
     <h2 class = user-name-post>${userPost.nameUser}<h2>

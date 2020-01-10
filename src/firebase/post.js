@@ -6,13 +6,12 @@ export const savePost = (user, contentPost, type) => firebase.firestore()
     uidUser: user.id,
     nameUser: user.name,
     photoUser: user.photo,
-    contentPost: contentPost,
+    contentPost1: contentPost,
     likes: 0,
     privacity: type,
     publicationDate: new Date()
   });
-
-//obtener post
+// obtener post
 export const getPost = () => firebase.firestore().collection('posts').orderBy('publicationDate', 'desc');
 
 //borrar post
