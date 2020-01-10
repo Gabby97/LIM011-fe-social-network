@@ -22,7 +22,7 @@ export const paintMikunaPost = (user) => {
     .onSnapshot((querySnapshot) => {
       document.querySelector(".container-list-posts").innerHTML = ' ';
       querySnapshot.forEach((post) => {
-        console.log(post);        
+     //  console.log(post);        
        //if ( post.data().privacity  === 'Public'  || ( post.data().uidUser  ===  user.id  &&  post.data().privacity  ===  'Private' )) 
         paintPost(post.data(), post.id);
       });
