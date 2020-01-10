@@ -1,4 +1,4 @@
-import { registerLogEvent, hidePassword, showPassword } from '../controller/login-controller.js';
+import { registerLogEvent, hidePassword, showPassword } from '../controller/register-controller.js';
 
 export default () => {
   const regContainer = document.createElement('div');

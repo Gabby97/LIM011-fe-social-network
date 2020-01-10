@@ -3,6 +3,7 @@ import {
   googleLog,
   emailLog,
   registerLog,
+  createUserCollection,
 } from '../firebase/auth.js';
 
 export const facebookLoginEvent = (event) => {
@@ -15,22 +16,17 @@ export const googleLoginEvent = (event) => {
   googleLog().then(() => { window.location.hash = '#/mikuna'; })
     .catch();
 };
-const email = document.querySelector('#field-email');
+/* const name = document.querySelector('#input-name').value;
+console.log(name)
+const email = document.querySelector('#field-email').value;
 const password = document.querySelector('#field-password');
-const errorMsg = document.querySelector('.ms-error');
-const errorEmail = () => {
-  password.classList.remove('field-error');
-  email.classList.add('field-error');
-};
-const errorPassword = () => {
-  email.classList.remove('field-error');
-  password.classList.add('field-error');
-};
+const errorMsg = document.querySelector('.ms-error'); */
+
 export const emailLoginEvent = (event) => {
   event.preventDefault();
-  /* const email = document.querySelector('#field-email');
+  const email = document.querySelector('#field-email');
   const password = document.querySelector('#field-password');
-  const errorMsg = document.querySelector('.ms-error'); */
+  const errorMsg = document.querySelector('.ms-error');
   emailLog(email.value, password.value).then(() => { window.location.hash = '#/mikuna'; })
     .catch((error) => { // Error
       switch (error.code) {
@@ -51,12 +47,22 @@ export const emailLoginEvent = (event) => {
       }
     });
 };
-export const registerLogEvent = (event) => {
+export const registerView = () => {
+  window.location.hash = '#/register';
+}
+/* export const registerLogEvent = (event) => {
   event.preventDefault();
-  /* const email = document.querySelector('#field-email');
-  const password = document.querySelector('#field-password');
-  const errorMsg = document.querySelector('.ms-error'); */
-  registerLog(email.value, password.value).then(() => { window.location.hash = '#/mikuna'; })
+  console.log("hola");
+  //  console.log(response.user.uid);
+  const name = document.querySelector('#input-name').value;
+  const email = document.querySelector('#input-email').value;
+  const password = document.querySelector('#field-password').value;
+  const errorMsg = document.querySelector('.ms-error').value; 
+  registerLog(email, password).then((response) => { 
+    console.log (response.user.uid);
+    createUserCollection(name, email, response.user.uid);
+    window.location.hash = '#/mikuna'; 
+  })
     .catch((error) => {
       switch (error.code) {
         case 'auth/invalid-email':
@@ -81,8 +87,17 @@ export const registerLogEvent = (event) => {
       }
     });
 };
+ */
+const errorEmail = () => {
+  password.classList.remove('field-error');
+  email.classList.add('field-error');
+};
+const errorPassword = () => {
+  email.classList.remove('field-error');
+  password.classList.add('field-error');
+};
 export const hidePassword = () => {
-  //  const password = document.querySelector('#field-password');
+  const password = document.querySelector('#field-password');
   const iconNotPassword = document.querySelector('#icon-notshow-password');
   const iconShowPassword = document.querySelector('#icon-show-password');
   password.setAttribute('type', 'text');
@@ -90,7 +105,7 @@ export const hidePassword = () => {
   iconShowPassword.classList.remove('hide');
 };
 export const showPassword = () => {
-  //  const password = document.querySelector('#field-password');
+  const password = document.querySelector('#field-password');
   const iconNotPassword = document.querySelector('#icon-notshow-password');
   const iconShowPassword = document.querySelector('#icon-show-password');
   password.setAttribute('type', 'password');

@@ -2,9 +2,11 @@ import {
   facebookLoginEvent,
   googleLoginEvent,
   emailLoginEvent,
+  registerView,
   hidePassword,
   showPassword,
 } from '../controller/login-controller.js';
+import { registerLog } from '../firebase/auth.js';
 
 export const viewLogin = () => {
   const logContainer = document.createElement('div');
@@ -39,5 +41,6 @@ export const viewLogin = () => {
   logContainer.querySelector('button[type = "submit"]').addEventListener('click', emailLoginEvent);
   logContainer.querySelector('#icon-notshow-password').addEventListener('click', hidePassword);
   logContainer.querySelector('#icon-show-password').addEventListener('click', showPassword);
+  logContainer.querySelector('#registrate').addEventListener('click', registerView);
   return logContainer;
 };
