@@ -1,4 +1,4 @@
-import { deletePost, updatePost, editPost } from '../firebase/post.js'
+import { deletePost, editPost  } from '../firebase/post.js'
 import { currentUser } from '../firebase/auth.js'
 
 export const deletePostEvent = (event) => {
@@ -19,16 +19,23 @@ export const deletePostEvent = (event) => {
             });
     }
 }
-
+//const newText = document.querySelector('.text-post').textContent;
 export const editPostEvent = (e) => {
-e.preventDefault();
-const btnEdit = event.target;
+//e.preventDefault();
+const btnEdit = e.target;
+//document.querySelector('.text-post').disabled = true;
 const idPost = btnEdit.closest('.container-posts').id;
 //const post = getPostById(idPost);
-const newText = btnEdit.closest('.container-posts').querySelector('.text-post').textContent;
-const userId = btnEdit.closest('.container-posts').querySelector('.header-post').id;
+document.querySelector('#edit-text-post').innerHTML= document.querySelector('.text-post').textContent;
+//const newText = document.querySelector('.text-post').textContent;
+console.log(newText);
 
-if (currentUser().id === userId){
+document.querySelector('.text-post').remove();
+
+//const userId = btnEdit.closest('.container-posts').querySelector('.header-post').id;
+//console.log(userId);
+
+/* if (currentUser().id === userId){
     editPost(idPost, newText)        
     .then((doc) => {
         console.log('se edito!', doc);
@@ -36,7 +43,24 @@ if (currentUser().id === userId){
     .catch((error) => {
         console.log('falló' ,error); 
     });
-}
+} */
+} 
+ 
+export const savePostEvent = (idPost) => {
+    const newText = document.querySelector('.textareaEdit').value;
+    console.log(idPost);
+    
+    //const userId = btnSave.closest('.container-posts').querySelector('.header-post').id;
+    //if (currentUser().id === userId){
+        editPost(idPost, newText)        
+        .then((doc) => {
+            console.log('se actualizo!', doc);
+        })
+        .catch((error) => {
+            console.log('falló' ,error); 
+        });
+    //}
+
 }
 
 export const ownerPost = (userPost) =>{
