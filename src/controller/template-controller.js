@@ -24,11 +24,11 @@ export const editPostEvent = (e) => {
 e.preventDefault();
 const btnEdit = event.target;
 const idPost = btnEdit.closest('.container-posts').id;
-//const post = getPostById(idPost);
 const newText = btnEdit.closest('.container-posts').querySelector('.text-post').textContent;
 const userId = btnEdit.closest('.container-posts').querySelector('.header-post').id;
 
 if (currentUser().id === userId){
+
     editPost(idPost, newText)        
     .then((doc) => {
         console.log('se edito!', doc);
@@ -38,6 +38,8 @@ if (currentUser().id === userId){
     });
 }
 }
+
+
 
 export const ownerPost = (userPost) =>{
     if(userPost.uidUser === currentUser().id)

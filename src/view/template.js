@@ -22,6 +22,7 @@ export const paintPost = (userPost, idPost) => {
     </select>
     </section>
     <p class = text-post>${userPost.contentPost}</p>
+    <textarea id="newTextPost></textarea>"
     <section class = footer-post>
     <div class = icon-comment-like><i class="far fa-thumbs-up margin-left"></i><i id = "icon-comment" class="far fa-comments margin-left"></i></div>
     <div class = ${(ownerPost(userPost) === 0)?'hide':'icon-edit-delete'}><i class="fas fa-edit margin-left" id="icon-edit-post"></i><i class="fas fa-trash-alt margin-left" id="icon-delete-post"></i></div>
@@ -36,6 +37,7 @@ export const paintPost = (userPost, idPost) => {
     container.querySelector('#select-privacity').addEventListener('change', privacityPostEvent);
 
     container.querySelector('#icon-edit-post').addEventListener('click', editPostEvent);
+    
     //container.querySelector('#btn-save').addEventListener('click');
 
     return container;
