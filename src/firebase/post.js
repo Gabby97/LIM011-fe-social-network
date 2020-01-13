@@ -23,6 +23,6 @@ export const editPost = (idPost, newText) => firebase.firestore().collection('po
   contentPost: newText,
 });
 
-export const updatePost = (idPost, parameter, value) => db.collection("posts").doc(idPost).update({
+export const updatePost = (idPost, parameter, value) => firebase.firestore().collection("posts").doc(idPost).update({
   parameter: value,
 });
