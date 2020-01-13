@@ -1,4 +1,4 @@
-import { deletePost, updatePost, editPost } from '../firebase/post.js'
+import { deletePost, editPost  } from '../firebase/post.js'
 import { currentUser } from '../firebase/auth.js'
 
 export const deletePostEvent = (event) => {
@@ -19,24 +19,25 @@ export const deletePostEvent = (event) => {
             });
     }
 }
-
 export const editPostEvent = (e) => {
-e.preventDefault();
-const btnEdit = event.target;
-const idPost = btnEdit.closest('.container-posts').id;
-const newText = btnEdit.closest('.container-posts').querySelector('.text-post').textContent;
-const userId = btnEdit.closest('.container-posts').querySelector('.header-post').id;
+//e.preventDefault();
+const btnEdit = e.target;
+//const idPost = btnEdit.closest('.container-posts').id;
+document.querySelector('#edit-text-post').innerHTML= document.querySelector('.text-post').textContent;
+} 
+ 
+export const savePostEvent = (idPost) => {
+    const newText = document.querySelector('.textareaEdit').value;
+    console.log(idPost);
+        editPost(idPost, newText)        
+        .then((doc) => {
+            console.log('se actualizo!', doc);
+        })
+        .catch((error) => {
+            console.log('falló' ,error); 
+        });
+    //}
 
-if (currentUser().id === userId){
-
-    editPost(idPost, newText)        
-    .then((doc) => {
-        console.log('se edito!', doc);
-    })
-    .catch((error) => {
-        console.log('falló' ,error); 
-    });
-}
 }
 
 
