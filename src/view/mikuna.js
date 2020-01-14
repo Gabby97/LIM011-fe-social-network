@@ -1,5 +1,5 @@
-import {createPostEvent, paintMikunaPost, iconPrivateEvent} from '../controller/mikuna-controller.js'
-import {currentUser} from '../firebase/auth.js'
+import { createPostEvent, paintMikunaPost, iconPrivateEvent } from '../controller/mikuna-controller.js';
+import { currentUser } from '../firebase/auth.js';
 
 export default () => {
   const user = currentUser();

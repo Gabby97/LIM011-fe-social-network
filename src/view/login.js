@@ -6,7 +6,6 @@ import {
   hidePassword,
   showPassword,
 } from '../controller/login-controller.js';
-import { registerLog } from '../firebase/auth.js';
 
 export const viewLogin = () => {
   const logContainer = document.createElement('div');
