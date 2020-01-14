@@ -16,11 +16,6 @@ export const googleLoginEvent = (event) => {
   googleLog().then(() => { window.location.hash = '#/mikuna'; })
     .catch();
 };
-/* const name = document.querySelector('#input-name').value;
-console.log(name)
-const email = document.querySelector('#field-email').value;
-const password = document.querySelector('#field-password');
-const errorMsg = document.querySelector('.ms-error'); */
 
 export const emailLoginEvent = (event) => {
   event.preventDefault();

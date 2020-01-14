@@ -9,14 +9,11 @@ export const createUserCollection = (name, email, id) => {
   });
 }
 // Login con google
-export const googleLog = () => firebase.auth()
-  .signInWithPopup(new firebase.auth.GoogleAuthProvider());
+export const googleLog = () => firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
 // Login con email y password // Inicio de sesion
-export const emailLog = (email, password) => firebase.auth()
-  .signInWithEmailAndPassword(email, password);
+export const emailLog = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
 // Login con facebook
-export const facebookLog = () => firebase.auth()
-  .signInWithPopup(new firebase.auth.FacebookAuthProvider());
+export const facebookLog = () => firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
 // usuario actual
 export const currentUser = () => {
   const user = firebase.auth().currentUser;

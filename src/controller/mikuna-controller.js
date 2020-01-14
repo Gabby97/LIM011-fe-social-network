@@ -2,8 +2,6 @@ import { getPost, savePost } from '../firebase/post.js';
 import { currentUser } from '../firebase/auth.js'
 import { paintPost } from '../view/template.js'
 
-let iconPrivate = 0;
-
 //llamada a guardar post en el database
 export const createPostEvent = (event) => {
   event.preventDefault();
@@ -22,8 +20,7 @@ export const paintMikunaPost = (user) => {
     .onSnapshot((querySnapshot) => {
       document.querySelector(".container-list-posts").innerHTML = ' ';
       querySnapshot.forEach((post) => {
-     //  console.log(post);        
-       //if ( post.data().privacity  === 'Public'  || ( post.data().uidUser  ===  user.id  &&  post.data().privacity  ===  'Private' )) 
+       if ( post.data().privacity  == 'Public'  || ( post.data().uidUser  ==  user.id  &&  post.data().privacity  ==  'Private' )) 
         paintPost(post.data(), post.id);
       });
     });
