@@ -26,7 +26,8 @@ export const paintPost = (userPost, idPost) => {
     <div class = icon-comment-like><i class="far fa-thumbs-up margin-left"></i><i id = "icon-comment" class="far fa-comments margin-left"></i></div>
     <div class = ${(ownerPost(userPost) === 0)?'hide':'icon-edit-delete'}><i class="fas fa-edit margin-left" id="icon-edit-post"></i><i class="fas fa-save margin-left" id="icon-save-post"></i><i class="fas fa-trash-alt margin-left" id="icon-delete-post"></i></div>
     </section>`
-    //<button id="btn-save" type="submit">Guardar</button>
+    console.log(userPost );
+    
     container.innerHTML = template;
     document.querySelector('.container-list-posts').appendChild(container);
 
@@ -52,15 +53,10 @@ export const paintPost = (userPost, idPost) => {
         `;
         divTextareaPost.innerHTML=textareaPost;
         divTextareaPost.querySelector('textarea#edit-text-post').value = userPost.contentPost;
-        document.querySelector('.text-post').classList.add('hide');
         document.querySelector('#'+ idPost).appendChild(divTextareaPost);
+        document.querySelector('.text-post').classList.add('hide');
         document.querySelector('.textareaEdit').classList.remove('hide');
-        
         //editPostEvent(e);
-       
-        //return divTextareaPost;
     });
-    //container.querySelector('#btn-save').addEventListener('click');
-
     return container;
 }
