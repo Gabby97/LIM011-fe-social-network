@@ -1,12 +1,12 @@
 
 //crear post
-export const savePost = (user, contentPost, type) => firebase.firestore()
+export const savePost = (user, content, type) => firebase.firestore()
   .collection('posts')
   .add({
     uidUser: user.id,
     nameUser: user.name,
     photoUser: user.photo,
-    contentPost: contentPost,
+    contentPost: content,
     likes: [],
     privacity: type,
     publicationDate: new Date()
@@ -27,6 +27,10 @@ export const getPostById = (idPost) => firebase.firestore().collection('posts').
 
 //borrar post
 export const deletePost = (idPost) => firebase.firestore().collection('posts').doc(idPost).delete();
+// editar post
+export const editPost = (idPost, newText) => firebase.firestore().collection('posts').doc(idPost).update({
+  contentPost: newText,
+});
 
 export const updatePostLike = (idPost, value) => {
   firebase.firestore().collection("posts").doc(idPost).update({

@@ -1,13 +1,13 @@
-import { deletePost, getPostById, updatePostPrivacity, updatePostLike } from '../firebase/post.js'
+import { deletePost, getPostById, updatePostPrivacity, updatePostLike, editPost } from '../firebase/post.js'
 import { currentUser } from '../firebase/auth.js'
 
 export const deletePostEvent = (event) => {
     event.preventDefault();
-    const btnDelete = event.target;
+    const btnDelete = event.target; //hay muchos iconos delete 
     const postId = btnDelete.closest('.container-posts').id;
     const userId = btnDelete.closest('.container-posts').querySelector('.header-post').id;
     if (currentUser().id === userId) {
-        deletePost(postId)
+        deletePost(postId)  
             .then((doc) => {
                 window.location.hash = '#/mikuna';
             })
@@ -16,6 +16,24 @@ export const deletePostEvent = (event) => {
             });
     }
 }
+export const editPostEvent = (e) => {
+//e.preventDefault();
+const btnEdit = e.target;
+//const idPost = btnEdit.closest('.container-posts').id;
+document.querySelector('#edit-text-post').innerHTML= document.querySelector('.text-post').textContent;
+} 
+ 
+export const savePostEvent = (idPost) => {
+    const newText = document.querySelector('.textareaEdit').value;
+    console.log(idPost);
+        editPost(idPost, newText)        
+        .then((doc) => {
+            console.log('se actualizo!', doc);
+        })
+        .catch((error) => {
+            console.log('falló' ,error); 
+        });
+    }
 
 export const ownerPost = (userPost) => (userPost.uidUser === currentUser().id) ? 1 : 0;
 

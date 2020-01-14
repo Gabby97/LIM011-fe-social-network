@@ -137,8 +137,8 @@
   align-items: center;
 }
 
-.icon-edit-delete{
-  margin-right: 20px;
+.icon-edit-save-delete{
+  margin-right: 10px;
   font-size: 15px;
   font-size: 20px;
   display: flex;
@@ -211,11 +211,11 @@ h1{
   margin-right: 10px;
 }
 
-p, .text-post{
+p, .text-post, .textareaEdit{
   font-family: 'Kreon', serif;
 }
 
-.text-post{
+.text-post, .textareaEdit{
   width: 90%;
   height: 150px;
   background-color: white;

@@ -1,4 +1,4 @@
-import { registerLogEvent } from '../controller/login-controller.js'
+import { registerLogEvent, hidePassword, showPassword } from '../controller/register-controller.js';
 
 export default () => {
   const regContainer = document.createElement('div');
@@ -23,11 +23,9 @@ export default () => {
 
   regContainer.innerHTML = registerTemplate;
 
-  //eventos
+  //  eventos
   regContainer.querySelector('button[type = "submit"]').addEventListener('click', registerLogEvent);
-  regContainer.querySelector('#icon-notshow-password').addEventListener('click',hidePassword);
-  regContainer.querySelector('#icon-show-password').addEventListener('click',showPassword);
-
+  regContainer.querySelector('#icon-notshow-password').addEventListener('click', hidePassword);
+  regContainer.querySelector('#icon-show-password').addEventListener('click', showPassword);
   return regContainer;
 };
-

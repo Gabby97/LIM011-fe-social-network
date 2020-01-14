@@ -35,4 +35,4 @@ export default () => {
   mikunaMain.querySelector('#button-create-post').addEventListener('click', createPostEvent);
   mikunaMain.querySelectorAll('.icon-post-private').forEach(icon => icon.addEventListener('click', iconPrivateEvent));
   return mikunaMain;
-}
+};
