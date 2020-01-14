@@ -1,4 +1,4 @@
-import { deletePost, updatePost } from '../firebase/post.js'
+import { deletePost, getPostById, updatePostPrivacity, updatePostLike } from '../firebase/post.js'
 import { currentUser } from '../firebase/auth.js'
 
 export const deletePostEvent = (event) => {
@@ -17,21 +17,28 @@ export const deletePostEvent = (event) => {
     }
 }
 
-export const ownerPost = (userPost) => {
-    if (userPost.uidUser === currentUser().id)
-        return 1;
-    else
-        return 0;
-}
+export const ownerPost = (userPost) => (userPost.uidUser === currentUser().id) ? 1 : 0;
 
 export const privacityPostEvent = (event) => {
-    console.log(event);    
     const postId = event.target.closest('.container-posts').id;
-   // updatePost(postId,privacity,);
+    const value = event.target[event.target.value].innerText;
+    updatePostPrivacity(postId, 'privacity', value);
 }
 
-export const commentPostEvent = (event) => {
-    console.log(event);
-
+export const likePostEvent = (event) => {
+    const postId = event.target.closest('.container-posts').id;
+    const idUser = currentUser().id;
+    getPostById(postId)
+        .then((doc) => {
+            let arrayLike = doc.data().likes;
+            if (arrayLike.includes(idUser)){
+            arrayLike = arrayLike.filter(id => id != idUser);
+            event.target.classList.add('selected');
+        }else{
+            arrayLike.push(idUser);
+            event.target.classList.remove('selected');
+        }
+        updatePostLike(postId, arrayLike);
+    })
 }
 

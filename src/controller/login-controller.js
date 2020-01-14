@@ -1,15 +1,18 @@
 import { facebookLog, googleLog, emailLog, registerLog } from '../firebase/auth.js'
+import {saveUser} from '../firebase/post.js'
 
 export const facebookLoginEvent = (event) => {
     event.preventDefault();
     facebookLog().then(() => {
+    //    saveUser(response);
         window.location.hash = '#/mikuna';
     }).catch((error) => console.log(error.message));
 }
 
 export const googleLoginEvent = (event) => {
     event.preventDefault();
-    googleLog().then(() => {
+    googleLog().then((response) => {
+//        saveUser(response);
         window.location.hash = '#/mikuna';
     }).catch((error) => { console.log(error.message); });
 }
@@ -19,7 +22,9 @@ export const emailLoginEvent = (event) => {
     const email = document.querySelector('#field-email');
     const password = document.querySelector('#field-password');
     const errorMsg = document.querySelector('.ms-error');
-    emailLog(email.value, password.value).then(() => { window.location.hash = '#/mikuna'; })
+    emailLog(email.value, password.value).then((response) => { 
+    //    saveUser(response);
+        window.location.hash = '#/mikuna'; })
         .catch((error) => { // Error
             switch (error.code) {
                 case 'auth/invalid-email':

@@ -23,5 +23,21 @@ export const currentUser = () => {
     return userData;
 }
 
+export const createUser = (obj) => {
+    const userData = {
+        id: user.uid,
+        name: (user.displayName === null) ? 'Anonimo' : user.displayName,
+        email: user.email,
+        photo: (user.photoURL === null) ? './image/photo.png' : user.photoURL
+    }
+}
 //cerrar sesion
 export const signOut = () => firebase.auth().signOut();
+
+export const logUser = (callback) => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        callback(user);
+      }
+    });
+  };
