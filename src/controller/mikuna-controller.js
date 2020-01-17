@@ -17,13 +17,12 @@ export const createPostEvent = (event) => {
 
 // llamada a repintar la red social
 export const paintMikunaPost = (user) => {
-  getPost()
-    .onSnapshot((querySnapshot) => {
-      document.querySelector('.container-list-posts').innerHTML = ' ';
-      querySnapshot.forEach((post) => {
-        if (post.data().privacity === 'Public' || (post.data().uidUser === user.id && post.data().privacity === 'Private')) { paintPost(post.data(), post.id); }
-      });
+  getPost((callback) => {
+    document.querySelector('.container-list-posts').innerHTML = ' ';
+    callback.forEach((post) => {
+      if (post.data().privacity === 'Public' || (post.data().uidUser === user.id && post.data().privacity === 'Private')) { paintPost(post.data(), post.id); }
     });
+  });
 };
 
 export const iconPrivateEvent = (event) => {
@@ -38,7 +37,7 @@ export const iconPrivateEvent = (event) => {
 export const iconsignOutEvent = (event) => {
   event.preventDefault();
   signOut().then(() => {
-    console.log('fuera');
+    console.log('listooooo');
     window.location.hash = '#/';
   });
 };

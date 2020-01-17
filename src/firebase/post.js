@@ -21,7 +21,14 @@ export const saveUser = (user, userData) => firebase.firestore().collection('use
   });
 
 // obtener post
-export const getPost = () => firebase.firestore().collection('posts').orderBy('publicationDate', 'desc');
+export const getPost = (callback) => {
+  firebase.firestore().collection('posts').orderBy('publicationDate', 'desc')
+    .onSnapshot((querySnapshot) => {
+      if (querySnapshot) {
+        callback(querySnapshot);
+      }
+    });
+};
 
 export const getPostById = idPost => firebase.firestore().collection('posts').doc(idPost).get();
 
