@@ -11,14 +11,14 @@ const errorPassword = (email, password) => {
 
 export const registerLogEvent = (event) => {
   event.preventDefault();
-  console.log('hola');
+  // console.log('hola');
   //  console.log(response.user.uid);
   const name = document.querySelector('#input-name').value;
   const email = document.querySelector('#input-email').value;
   const password = document.querySelector('#field-password').value;
   const errorMsg = document.querySelector('.ms-error').value;
   registerLog(email, password).then((response) => {
-    console.log(response.user.uid);
+    // console.log(response.user.uid);
     createUserCollection(name, email, response.user.uid);
     window.location.hash = '#/mikuna';
   })

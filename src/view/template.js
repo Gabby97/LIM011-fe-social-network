@@ -32,7 +32,7 @@ export const paintPost = (userPost, idPost) => {
     <div class = icon-comment-like><i class="far fa-thumbs-up margin-left" id = "icon-like"></i><i id = "icon-comment" class="far fa-comments margin-left"></i></div>
     <div class = ${(ownerPost(userPost) === 0) ? 'hide' : 'icon-edit-delete'}><i class="fas fa-edit margin-left" id = "icon-edit-post"></i><i class="fas fa-save margin-left" id="icon-save-post"></i><i class="fas fa-trash-alt margin-left" id="icon-delete-post"></i></div>
     </section>`;
-  console.log(userPost);
+  // console.log(userPost);
 
   container.innerHTML = template;
   document.querySelector('.container-list-posts').appendChild(container);

@@ -1,4 +1,6 @@
-import { createPostEvent, paintMikunaPost, iconPrivateEvent } from '../controller/mikuna-controller.js';
+import {
+  createPostEvent, paintMikunaPost, iconPrivateEvent, iconsignOutEvent,
+} from '../controller/mikuna-controller.js';
 import { currentUser } from '../firebase/auth.js';
 
 export default () => {
@@ -34,5 +36,6 @@ export default () => {
   paintMikunaPost(user);
   mikunaMain.querySelector('#button-create-post').addEventListener('click', createPostEvent);
   mikunaMain.querySelectorAll('.icon-post-private').forEach(icon => icon.addEventListener('click', iconPrivateEvent));
+  mikunaMain.querySelector('.btn-cerrar-sesion').addEventListener('click', iconsignOutEvent);
   return mikunaMain;
 };

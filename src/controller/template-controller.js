@@ -10,31 +10,31 @@ export const deletePostEvent = (event) => {
   const userId = btnDelete.closest('.container-posts').querySelector('.header-post').id;
   if (currentUser().id === userId) {
     deletePost(postId)
-      .then((doc) => {
+      .then(() => {
         window.location.hash = '#/mikuna';
-        console.log(doc);
+        // console.log(doc);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        // console.log(error);
       });
   }
 };
-export const editPostEvent = (e) => {
+export const editPostEvent = () => {
 // e.preventDefault();
   // const idPost = btnEdit.closest('.container-posts').id;
-  console.log(e);
+  // console.log(e);
   document.querySelector('#edit-text-post').innerHTML = document.querySelector('.text-post').textContent;
 };
 
 export const savePostEvent = (idPost) => {
   const newText = document.querySelector('.textareaEdit').value;
-  console.log(idPost);
+  // console.log(idPost);
   editPost(idPost, newText)
-    .then((doc) => {
-      console.log('se actualizo!', doc);
+    .then(() => {
+      // console.log('se actualizo!', doc);
     })
-    .catch((error) => {
-      console.log('falló', error);
+    .catch(() => {
+      // console.log('falló', error);
     });
 };
 
