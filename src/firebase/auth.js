@@ -17,6 +17,14 @@ export const emailLog = (email, password) => firebase.auth()
 // Login con facebook
 export const facebookLog = () => firebase.auth()
   .signInWithPopup(new firebase.auth.FacebookAuthProvider());
+
+export const logUser = (callback) => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      callback(user);
+    }
+  });
+};
 // usuario actual
 export const currentUser = () => {
   const user = firebase.auth().currentUser;

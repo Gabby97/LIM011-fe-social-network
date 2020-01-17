@@ -1,4 +1,5 @@
 import { components } from '../view/index.js';
+import { logUser } from '../firebase/auth.js';
 
 
 //  vista de templates
@@ -15,8 +16,7 @@ export const viewTemplate = (router) => {
     case '#/register':
     { return base.appendChild(components.vistaRegistro()); }
     case '#/mikuna':
-    { return base.appendChild(components.vistaMikuna());
-    }
+    { return logUser(objUser => base.appendChild(components.vistaMikuna(objUser))); }
     default:
       break;
   }

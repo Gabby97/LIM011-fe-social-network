@@ -3,7 +3,8 @@ import {
 } from '../controller/mikuna-controller.js';
 import { currentUser } from '../firebase/auth.js';
 
-export default () => {
+export default (objUser) => {
+  console.log(objUser);
   const user = currentUser();
   const mikunaMain = document.createElement('div');
   const postTemplate = `
